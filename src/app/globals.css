@@ -1,0 +1,162 @@
+/* ================= TAILWIND ================= */
+@import "tailwindcss";
+
+/* ================= BRAND COLORS ================= */
+@layer theme {
+  :root {
+    --color-primary: #1B304B;   /* Navy Blue */
+    --color-gold: #B89454;      /* Gold/Bronze */
+    --color-lightgold: #D4B982; /* Light Gold */
+    --color-text: #1f2937;
+    --color-muted: #6b7280;
+  }
+
+  @theme {
+    --color-primary: #1B304B;
+    --color-gold: #B89454;
+    --color-lightgold: #D4B982;
+  }
+}
+
+/* ================= BASE STYLES ================= */
+@layer base {
+
+  body {
+    font-family: "Inter", sans-serif;
+    color: var(--color-text);
+    background-color: #ffffff;
+  }
+
+  /* ================= DESKTOP TYPOGRAPHY ================= */
+
+  h1 {
+    font-weight: 600;
+    font-size: 68px;
+    line-height: 88px;
+    font-family: "Inter", sans-serif;
+    color: var(--color-primary);
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 50px;
+    font-family: "Inter", sans-serif;
+    color: var(--color-primary);
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    font-family: "Inter", sans-serif;
+    color: var(--color-primary);
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    font-family: "Inter", sans-serif;
+    color: var(--color-muted);
+  }
+
+  /* Optional small text */
+  .text-small {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  /* Navigation text */
+  .text-nav {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+/* ================= GLOBAL UTILITIES ================= */
+@layer components {
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    background-color: var(--color-gold);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  /* Property Card */
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden;
+  }
+
+  .card:hover {
+    @apply shadow-lg;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+
+  h1 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .section {
+    @apply py-10;
+  }
+}
