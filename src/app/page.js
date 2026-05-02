@@ -151,10 +151,9 @@ const PROPERTIES = [
 const HOW_WE_HELP = {
   heading: "Discover how we can help",
   subheading: "Thousands of luxury home enthusiasts just like you visit our website.",
-  bgColor: "#fdf6f0", // optional — omit for white
+  bgColor: "#EEF2F7", // optional — omit for white
   tabs: [
     { key: "buying",  label: "Buying"  },
-    { key: "rating",  label: "Rating"  },
     { key: "selling", label: "Selling" },
   ],
   cards: [
@@ -180,50 +179,7 @@ const HOW_WE_HELP = {
       description: "In fermentum dignissim mauris et blandit. Fusce efficitur libero sit amet ullamcorper, nec volutpat justo fringilla.",
       learnMoreHref: "/buying/down-payment",
     },
-    // ── Rating tab ──
-    {
-      id: 4, tab: "rating",
-      icon: <StarHouseIcon />,
-      title: "See verified property ratings",
-      description: "Browse honest reviews and ratings from real buyers. Make informed decisions with trusted community feedback.",
-      learnMoreHref: "/rating/verified",
-    },
-    {
-      id: 5, tab: "rating",
-      icon: <GrowthHouseIcon />,
-      title: "Track market value trends",
-      description: "Understand how property values change over time in your target area with our up-to-date analytics.",
-      learnMoreHref: "/rating/trends",
-    },
-    {
-      id: 6, tab: "rating",
-      icon: <MoneyHouseIcon />,
-      title: "Compare property valuations",
-      description: "Get a side-by-side comparison of similar properties to ensure you're getting the best value for your money.",
-      learnMoreHref: "/rating/compare",
-    },
-    // ── Selling tab ──
-    {
-      id: 7, tab: "selling",
-      icon: <TagHouseIcon />,
-      title: "Price your property right",
-      description: "Our experts help you set the perfect listing price to attract serious buyers quickly and close faster.",
-      learnMoreHref: "/selling/pricing",
-    },
-    {
-      id: 8, tab: "selling",
-      icon: <KeyHouseIcon />,
-      title: "List and manage your property",
-      description: "Easily list your home, manage inquiries, and schedule viewings all from one convenient dashboard.",
-      learnMoreHref: "/selling/list",
-    },
-    {
-      id: 9, tab: "selling",
-      icon: <SearchHouseIcon />,
-      title: "Find the right buyers fast",
-      description: "We match your listing with qualified buyers actively searching in your area so you sell without delays.",
-      learnMoreHref: "/selling/buyers",
-    },
+    
   ],
 };
   return (
@@ -232,8 +188,9 @@ const HOW_WE_HELP = {
       <HomeBanner />
       
       <PropertyTypes PROPERTY_TYPES={properties} />
+      <HowWeHelpSection {...HOW_WE_HELP} />
       <PropertiesGrid properties={PROPERTIES} />
-      <HowWeHelpSection {...HOW_WE_HELP} />;
+      
       
       
     </div>

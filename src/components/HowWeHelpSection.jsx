@@ -87,20 +87,20 @@ export function FeatureCard({ icon, title, description, learnMoreHref }) {
 
       {/* Learn More Button */}
       <Link
-        href={learnMoreHref}
-        className="mt-auto px-8 py-3 rounded-full border text-small font-medium transition-all duration-200"
-        style={{ borderColor: "var(--color-gold)", color: "var(--color-gold)" }}
-        onMouseEnter={e => {
-          e.currentTarget.style.backgroundColor = "var(--color-gold)";
-          e.currentTarget.style.color = "#fff";
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.backgroundColor = "transparent";
-          e.currentTarget.style.color = "var(--color-gold)";
-        }}
-      >
-        Learn More
-      </Link>
+  href={learnMoreHref}
+  className="mt-auto px-8 py-3 rounded-full border text-small font-medium transition-all duration-200"
+  style={{ borderColor: "var(--color-primary)", color: "var(--color-primary)" }}
+  onMouseEnter={e => {
+    e.currentTarget.style.backgroundColor = "var(--color-primary)";
+    e.currentTarget.style.color = "#fff";
+  }}
+  onMouseLeave={e => {
+    e.currentTarget.style.backgroundColor = "transparent";
+    e.currentTarget.style.color = "var(--color-primary)";
+  }}
+>
+  Learn More
+</Link>
     </div>
   );
 }
@@ -117,8 +117,8 @@ function TabButton({ label, isActive, onClick }) {
       className="px-7 py-2.5 rounded-full text-small font-medium transition-all duration-200 border"
       style={
         isActive
-          ? { backgroundColor: "var(--color-gold)", color: "#fff", borderColor: "var(--color-gold)" }
-          : { backgroundColor: "transparent", color: "var(--color-gold)", borderColor: "var(--color-gold)" }
+          ? { backgroundColor: "var(--color-primary)", color: "#fff", borderColor: "var(--color-primary)" }
+          : { backgroundColor: "transparent", color: "var(--color-primary)", borderColor: "var(--color-primary)" }
       }
     >
       {label}
@@ -141,7 +141,7 @@ export default function HowWeHelpSection({
   subheading,
   tabs,
   cards,
-  bgColor = "#ffffff",
+  bgColor = "#F8F8F8",
 }) {
   const [activeTab, setActiveTab] = useState(tabs[0].key);
 
