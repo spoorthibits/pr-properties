@@ -77,9 +77,9 @@
 /* ================= GLOBAL UTILITIES ================= */
 @layer components {
 
-  /* Container */
+  /* ================= CONTAINER ================= */
   .container-custom {
-    @apply max-w-7xl mx-auto px-4;
+    @apply w-full mx-auto px-4;
   }
 
   /* Section spacing */
@@ -119,7 +119,44 @@
   }
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= CONTAINER RESPONSIVE ================= */
+
+/* Small devices (≥640px) */
+@media (min-width: 640px) {
+  .container-custom {
+    @apply max-w-xl;
+  }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  .container-custom {
+    @apply max-w-3xl;
+  }
+}
+
+/* Large devices (≥1024px) */
+@media (min-width: 1024px) {
+  .container-custom {
+    @apply max-w-5xl;
+  }
+}
+
+/* Extra large (≥1280px) */
+@media (min-width: 1280px) {
+  .container-custom {
+    @apply max-w-6xl;
+  }
+}
+
+/* 2XL screens (≥1536px) */
+@media (min-width: 1536px) {
+  .container-custom {
+    @apply max-w-7xl;
+  }
+}
+
+/* ================= RESPONSIVE TYPOGRAPHY ================= */
 
 /* Tablet */
 @media (max-width: 1024px) {
