@@ -1,12 +1,9 @@
 import Image from "next/image";
-import HomeBanner from "@/components/HomeBanner";
 
 export default function Home() {
   return (
-    <div>
-      
-      <HomeBanner />
-      
+    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <h1>Welcome to PR Properties</h1>
     </div>
   );
 }
