@@ -41,14 +41,14 @@ export default function HeroBanner() {
       {/* ─────────────────────────────────────────
           HERO SECTION
       ───────────────────────────────────────── */}
-      <section className="relative h-[92vh] min-h-[520px] overflow-hidden">
+      <section className="relative h-[100vh] min-h-[520px] overflow-hidden">
 
         {/* Background image — fixed so it doesn't scroll */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80')",
+              "url('/assets/homebanner.avif')",
             backgroundAttachment: "fixed",
           }}
         />
@@ -185,7 +185,7 @@ function SearchBar({
       {/* ── Filter icon ── */}
       <button className="flex-shrink-0 p-2 rounded-full bg-orange-50 hover:bg-orange-100 transition-colors">
         <svg
-          className="w-5 h-5 text-orange-400"
+          className="w-5 h-5 text-[var(--color-primary)]"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -200,7 +200,7 @@ function SearchBar({
       </button>
 
       {/* ── Search Button ── */}
-      <button className="flex-shrink-0 flex items-center gap-2 bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-200 shadow-md">
+      <button className="flex-shrink-0 flex items-center gap-2 bg-[var(--color-primary)] hover:bg-orange-600 active:scale-95 text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-200 shadow-md">
         Search
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <circle cx="11" cy="11" r="8" />

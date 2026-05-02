@@ -7,9 +7,9 @@ import Image from "next/image";
 /* ================= DEFAULT CONFIG ================= */
 
 const DEFAULT_LOGO = {
-  src: "/logo.png",
+  src: "/assets/logo.png",
   alt: "Logo",
-  text: "PROTY",
+  
   href: "/",
 };
 
@@ -36,7 +36,7 @@ export default function Navbar({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white border-b">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white">
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
 
@@ -47,8 +47,8 @@ export default function Navbar({
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={40}
-                  height={40}
+                  width={180}
+                  height={140}
                   priority
                 />
               )}
@@ -75,7 +75,7 @@ export default function Navbar({
 
           {/* ================= CTA ================= */}
           <div className="hidden md:block">
-            <Link href={cta.href} className="btn-primary">
+            <Link href={cta.href} className="text-[var(--color-gold)] border-2 px-8 py-3 rounded-md hover:bg-[var(--color-gold)] hover:text-white transition">
               {cta.label}
             </Link>
           </div>
