@@ -15,14 +15,14 @@ const DEFAULT_LOGO = {
 
 const DEFAULT_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Our Projects", href: "/projects" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Our Properties", href: "/properties" },
   { label: "Our Services", href: "/services" },
   { label: "Contact Us", href: "/contact" },
 ];
 
 const DEFAULT_CTA = {
-  label: "Get Started",
+  label: "Enquire Now",
   href: "/contact",
 };
 

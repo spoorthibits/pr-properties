@@ -1,6 +1,17 @@
+"use client";
 import Image from "next/image";
 import HomeBanner from "@/components/HomeBanner";
 import PropertyTypes from "@/components/SearchFor";
+import PropertyCard from "@/components/PropertyCard";
+import PropertiesGrid from "@/components/PropertiesGrid";
+import HowWeHelpSection, {
+  SearchHouseIcon,
+  MoneyHouseIcon,
+  GrowthHouseIcon,
+  KeyHouseIcon,
+  StarHouseIcon,
+  TagHouseIcon,
+} from "@/components/HowWeHelpSection";
 
 export default function Home() {
   const properties = [
@@ -90,12 +101,140 @@ export default function Home() {
     ),
   },
 ];
+const PROPERTIES = [
+  {
+    id: 1,
+    image: { src: "/assets/home1.jpg", alt: "Elegant studio flat" },
+    badges: [
+      { label: "Featured", variant: "featured" },
+      { label: "For Sale", variant: "status" },
+    ],
+    title: "Elegant studio flat",
+    address: "Ingraham St, Brooklyn, NY 11237",
+    beds: 3,
+    baths: 3,
+    sqft: 4043,
+    price: 8600,
+    detailsHref: "/properties/1",
+  },
+  {
+    id: 2,
+    image: { src: "/assets/home2.jpg", alt: "Elegant studio flat" },
+    badges: [
+      { label: "Featured", variant: "featured" },
+      { label: "For Sale", variant: "status" },
+    ],
+    title: "Elegant studio flat",
+    address: "Ingraham St, Brooklyn, NY 11237",
+    beds: 3,
+    baths: 3,
+    sqft: 4043,
+    price: 8600,
+    detailsHref: "/properties/1",
+  },
+  {
+    id: 3,
+    image: { src: "/assets/home3.jpg", alt: "Elegant studio flat" },
+    badges: [
+      { label: "Featured", variant: "featured" },
+      { label: "For Sale", variant: "status" },
+    ],
+    title: "Elegant studio flat",
+    address: "Ingraham St, Brooklyn, NY 11237",
+    beds: 3,
+    baths: 3,
+    sqft: 4043,
+    price: 8600,
+    detailsHref: "/properties/1",
+  },
+];
+const HOW_WE_HELP = {
+  heading: "Discover how we can help",
+  subheading: "Thousands of luxury home enthusiasts just like you visit our website.",
+  bgColor: "#fdf6f0", // optional — omit for white
+  tabs: [
+    { key: "buying",  label: "Buying"  },
+    { key: "rating",  label: "Rating"  },
+    { key: "selling", label: "Selling" },
+  ],
+  cards: [
+    // ── Buying tab ──
+    {
+      id: 1, tab: "buying",
+      icon: <SearchHouseIcon />,
+      title: "Find out how much you can afford",
+      description: "We'll help you estimate your budget range. Save to your buyer profile to help in your search.",
+      learnMoreHref: "/buying/afford",
+    },
+    {
+      id: 2, tab: "buying",
+      icon: <MoneyHouseIcon />,
+      title: "Understand your monthly costs",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin ipsum eu massa sollicitudin facilisis.",
+      learnMoreHref: "/buying/costs",
+    },
+    {
+      id: 3, tab: "buying",
+      icon: <GrowthHouseIcon />,
+      title: "Get help with your down payment",
+      description: "In fermentum dignissim mauris et blandit. Fusce efficitur libero sit amet ullamcorper, nec volutpat justo fringilla.",
+      learnMoreHref: "/buying/down-payment",
+    },
+    // ── Rating tab ──
+    {
+      id: 4, tab: "rating",
+      icon: <StarHouseIcon />,
+      title: "See verified property ratings",
+      description: "Browse honest reviews and ratings from real buyers. Make informed decisions with trusted community feedback.",
+      learnMoreHref: "/rating/verified",
+    },
+    {
+      id: 5, tab: "rating",
+      icon: <GrowthHouseIcon />,
+      title: "Track market value trends",
+      description: "Understand how property values change over time in your target area with our up-to-date analytics.",
+      learnMoreHref: "/rating/trends",
+    },
+    {
+      id: 6, tab: "rating",
+      icon: <MoneyHouseIcon />,
+      title: "Compare property valuations",
+      description: "Get a side-by-side comparison of similar properties to ensure you're getting the best value for your money.",
+      learnMoreHref: "/rating/compare",
+    },
+    // ── Selling tab ──
+    {
+      id: 7, tab: "selling",
+      icon: <TagHouseIcon />,
+      title: "Price your property right",
+      description: "Our experts help you set the perfect listing price to attract serious buyers quickly and close faster.",
+      learnMoreHref: "/selling/pricing",
+    },
+    {
+      id: 8, tab: "selling",
+      icon: <KeyHouseIcon />,
+      title: "List and manage your property",
+      description: "Easily list your home, manage inquiries, and schedule viewings all from one convenient dashboard.",
+      learnMoreHref: "/selling/list",
+    },
+    {
+      id: 9, tab: "selling",
+      icon: <SearchHouseIcon />,
+      title: "Find the right buyers fast",
+      description: "We match your listing with qualified buyers actively searching in your area so you sell without delays.",
+      learnMoreHref: "/selling/buyers",
+    },
+  ],
+};
   return (
     <div>
       
       <HomeBanner />
       
       <PropertyTypes PROPERTY_TYPES={properties} />
+      <PropertiesGrid properties={PROPERTIES} />
+      <HowWeHelpSection {...HOW_WE_HELP} />;
+      
       
     </div>
   );
