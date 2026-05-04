@@ -82,7 +82,7 @@ export default function ScrollingLogos({
           <div className="container-custom mt-16">
             <div
               style={{
-                background: "#FDF6EE",
+                background: "var(--color-offwhite)",
                 borderRadius: "20px",
                 overflow: "hidden",
                 display: "flex",

@@ -75,7 +75,7 @@ export default function Navbar({
 
           {/* ================= CTA ================= */}
           <div className="hidden md:block">
-            <Link href={cta.href} className="text-[var(--color-gold)] border-2 px-8 py-3 rounded-md hover:bg-[var(--color-gold)] hover:text-white transition">
+            <Link href={cta.href} className="text-[var(--color-white)] border-2 px-6 py-2.5 rounded-md bg-[var(--color-primary)] hover:text-white transition">
               {cta.label}
             </Link>
           </div>

@@ -71,7 +71,7 @@ const WaveDivider = () => (
     preserveAspectRatio="none"
     xmlns="http://www.w3.org/2000/svg"
     className="w-full block"
-    style={{ marginBottom: "-3px" }}
+    style={{ marginBottom: "-1px", backgroundColor: "#f5f5f0" }}
   >
     <path
       d="M0,40 C150,80 350,0 600,40 C850,80 1050,0 1200,40 L1200,80 L0,80 Z"
@@ -79,7 +79,6 @@ const WaveDivider = () => (
     />
   </svg>
 );
-
 export default function Footer() {
   return (
     <footer>
@@ -200,27 +199,12 @@ export default function Footer() {
           </div>
 
           {/* ── Bottom bar ── */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-white/10">
-            <p className="text-xs text-center sm:text-left text-white/40">
-              Copyright © 2026 <span className="font-semibold text-white">PROTY – REAL ESTATE</span>. All rights reserved.
-            </p>
-
-            {/* Social icons */}
-            <div className="flex items-center gap-2">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 bg-white/10 hover:bg-gold hover:text-white transition-all duration-300"
-                >
-                  {s.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+           
 
         </div>
+        <div className="bg-[var(--color-gold)] text-white text-center py-4 text-sm px-0">
+        © Copyright 2026, All Rights Reserved - PR Dream Properties
+      </div>
       </div>
     </footer>
   );

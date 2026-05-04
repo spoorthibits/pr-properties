@@ -88,6 +88,7 @@ export default function HowWeHelpSection({
     { key: "buying", label: "Buying" },
     { key: "selling", label: "Selling" },
   ],
+  className = "",
   cardsByTab = {
     buying: [
       {
@@ -177,12 +178,10 @@ export default function HowWeHelpSection({
 
   return (
     <section
-      style={{
-        backgroundColor: bgColor,
-        padding: "3.5rem 1rem",
-        fontFamily: "'Inter', 'Segoe UI', sans-serif",
-      }}
+      className={`relative w-full bg-offwhite overflow-hidden bg-[url('/assets/linesbg.png')] p-24 bg-cover bg-center bg-no-repeat ${className}`}
+      
     >
+    
       <style>{`
         .hwh-list-item { transition: background 0.2s; }
         .hwh-list-item:hover { background: rgba(255,255,255,0.06) !important; }

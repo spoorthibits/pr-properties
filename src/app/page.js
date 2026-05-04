@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import HomeBanner from "@/components/HomeBanner";
+import Banner from "@/components/Banner";
 import PropertyTypes from "@/components/SearchFor";
 import PropertyCard from "@/components/PropertyCard";
 import PropertiesGrid from "@/components/PropertiesGrid";
@@ -198,10 +198,32 @@ export default function Home() {
     buttonHref: "/appraisal",
     image: "/assets/agent.png",
   };
+const FAQS = [
+  {
+    question: "How do I know how much property I can afford?",
+    answer: "Start by calculating your net monthly income and existing liabilities. A general rule is that your EMI should not exceed 40% of your monthly take-home pay. Factor in your down payment savings, credit score, and any additional costs like registration, stamp duty, and maintenance. Our budget calculator can give you a personalised estimate in minutes.",
+  },
+  {
+    question: "What is the difference between carpet area, built-up area, and super built-up area?",
+    answer: "Carpet area is the actual usable floor space inside your home — the area where you can lay a carpet. Built-up area adds the thickness of walls to carpet area. Super built-up area (also called saleable area) further includes a proportionate share of common spaces like lobbies, staircases, and lifts. Always compare properties on carpet area for an accurate price-per-sqft comparison.",
+  },
+  {
+    question: "What documents do I need to verify before buying a property?",
+    answer: "You should verify the title deed, encumbrance certificate, approved building plan, occupancy certificate, property tax receipts, and RERA registration number. For apartments, also check the society's no-objection certificate (NOC). We recommend engaging a legal advisor to conduct thorough due diligence before signing any agreement.",
+  },
+  {
+    question: "How long does the home loan approval process take?",
+    answer: "Pre-approval (in-principle sanction) can happen within 24–72 hours if your documents are in order. Final loan disbursement typically takes 7–15 working days after property verification and legal checks are complete. Having your KYC, income proof, and property documents ready upfront significantly speeds up the process.",
+  },
+  {
+    question: "What costs should I budget for beyond the property price?",
+    answer: "Budget an additional 8–12% over the property price for ancillary costs. These include stamp duty (4–7% depending on state), registration fees (1%), GST for under-construction properties (5%), legal/due diligence fees, interior fit-outs, and society maintenance deposits. Always keep a contingency buffer of at least 5%.",
+  },
+];
 
   return (
     <div>
-      <HomeBanner />
+      <Banner />
       <PropertyTypes PROPERTY_TYPES={properties} />
       <PropertiesGrid properties={PROPERTIES} />
       <HowWeHelpSection slides={HOW_WE_HELP_SLIDES} />
@@ -211,7 +233,7 @@ export default function Home() {
         logos={LOGOS}
         cta={SCROLLING_CTA}
       />
-      <FAQSection /> 
+      <FAQSection faqData={FAQS} /> 
     </div>
   );
 }
