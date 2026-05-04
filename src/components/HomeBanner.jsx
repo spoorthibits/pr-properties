@@ -2,35 +2,49 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const LISTING_TYPES = ["For sale", "For rent", "New homes"];
+const DEFAULT_LISTING_TYPES = ["For sale", "For rent", "New homes"];
 
-export default function HeroBanner() {
+export default function HeroBanner({
+  title = "Search Luxury Homes",
+  subtitle = "Thousands of luxury home enthusiasts just like you visit our website.",
+  backgroundImage = "/assets/homebanner.avif",
+  overlay = "bg-black/40",
+  showSearch = true,
+  listingTypes = DEFAULT_LISTING_TYPES,
+  defaultType = "For sale",
+}) {
+  // ── Intro state ──────────────────────────────────────────────────────────
+  const [zoom, setZoom] = useState(false);
+  const [introVisible, setIntroVisible] = useState(true);
+
+  // ── HeroBanner state ─────────────────────────────────────────────────────
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedType, setSelectedType] = useState("For sale");
+  const [selectedType, setSelectedType] = useState(defaultType);
   const [searchValue, setSearchValue] = useState("");
-  const [scrolled, setScrolled] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
   const dropdownRef = useRef(null);
 
-  /* ── scroll state for sticky search bar ── */
+  // ── Trigger zoom at 200ms ────────────────────────────────────────────────
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  /* ── entrance animation trigger ── */
-  useEffect(() => {
-    const t = setTimeout(() => setContentVisible(true), 100);
+    const t = setTimeout(() => setZoom(true), 200);
     return () => clearTimeout(t);
   }, []);
 
-  /* ── close dropdown on outside click ── */
+  // ── Remove intro + show hero content after animation ends ────────────────
+  useEffect(() => {
+    if (!zoom) return;
+    const t = setTimeout(() => {
+      setIntroVisible(false);
+      setTimeout(() => setContentVisible(true), 100);
+    }, 1000);
+    return () => clearTimeout(t);
+  }, [zoom]);
+
+  // ── Outside click for dropdown ───────────────────────────────────────────
   useEffect(() => {
     const handler = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target))
         setDropdownOpen(false);
-      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -38,81 +52,97 @@ export default function HeroBanner() {
 
   return (
     <>
-      {/* ─────────────────────────────────────────
-          HERO SECTION
-      ───────────────────────────────────────── */}
+      <style>{`
+        @keyframes vtm-zoom-out {
+          from { transform: scale(1);  opacity: 1; }
+          to   { transform: scale(40); opacity: 0; }
+        }
+        .vtm-overlay-zoom {
+          animation: vtm-zoom-out 2.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .vtm-overlay-zoom { animation: none; opacity: 0; }
+        }
+      `}</style>
+
       <section className="relative h-[100vh] min-h-[520px] overflow-hidden">
 
-        {/* Background image — fixed so it doesn't scroll */}
+        {/* ── Background ── */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage:
-              "url('/assets/homebanner.avif')",
+            backgroundImage: `url(${backgroundImage})`,
             backgroundAttachment: "fixed",
           }}
         />
 
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        {/* ── Overlay ── */}
+        <div className={`absolute inset-0 ${overlay}`} />
 
-        {/* ── HERO CONTENT (scrolls normally) ── */}
+        {/* ── Hero Content ── */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-
-          {/* Heading */}
-          <h1
-            className="text-white drop-shadow-lg transition-all duration-700 ease-out"
-            style={{
-              opacity: contentVisible ? 1 : 0,
-              transform: contentVisible ? "translateY(0)" : "translateY(28px)",
-            }}
-          >
-            Search Luxury Homes
-          </h1>
-
-          {/* Sub-heading */}
-          <p
-            className="mt-3 text-white/85 max-w-xl transition-all duration-700 ease-out delay-150"
-            style={{
-              opacity: contentVisible ? 1 : 0,
-              transform: contentVisible ? "translateY(0)" : "translateY(20px)",
-            }}
-          >
-            Thousands of luxury home enthusiasts just like you visit our website.
-          </p>
-
-          {/* ── SEARCH BAR (inline — visible when not scrolled) ── */}
-          <div
-            className="mt-8 w-full max-w-2xl transition-all duration-700 ease-out delay-300"
-            style={{
-              opacity: contentVisible ? 1 : 0,
-              transform: contentVisible ? "translateY(0)" : "translateY(20px)",
-            }}
-          >
-            <SearchBar
-              selectedType={selectedType}
-              setSelectedType={setSelectedType}
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              dropdownOpen={dropdownOpen}
-              setDropdownOpen={setDropdownOpen}
-              dropdownRef={dropdownRef}
-            />
-          </div>
+          {title && (
+            <h1
+              className="text-white drop-shadow-lg transition-all duration-700 ease-out"
+              style={{
+                opacity: contentVisible ? 1 : 0,
+                transform: contentVisible ? "translateY(0)" : "translateY(28px)",
+              }}
+            >
+              {title}
+            </h1>
+          )}
+          {subtitle && (
+            <p
+              className="mt-3 text-white/85 max-w-xl transition-all duration-700 ease-out delay-150"
+              style={{
+                opacity: contentVisible ? 1 : 0,
+                transform: contentVisible ? "translateY(0)" : "translateY(20px)",
+              }}
+            >
+              {subtitle}
+            </p>
+          )}
+          {showSearch && (
+            <div
+              className="mt-8 w-full max-w-2xl transition-all duration-700 ease-out delay-300"
+              style={{
+                opacity: contentVisible ? 1 : 0,
+                transform: contentVisible ? "translateY(0)" : "translateY(20px)",
+              }}
+            >
+              <SearchBar
+                selectedType={selectedType}
+                setSelectedType={setSelectedType}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                dropdownOpen={dropdownOpen}
+                setDropdownOpen={setDropdownOpen}
+                dropdownRef={dropdownRef}
+                listingTypes={listingTypes}
+              />
+            </div>
+          )}
         </div>
-      </section>
 
-      {/* ─────────────────────────────────────────
-          STICKY SEARCH BAR  (appears on scroll)
-      ───────────────────────────────────────── */}
-      
+        {/* ── Intro Overlay ── */}
+        {introVisible && (
+          <div
+            className={`absolute inset-0 z-50 flex items-center justify-center bg-white select-none pointer-events-none${zoom ? " vtm-overlay-zoom" : ""}`}
+            style={{ mixBlendMode: "screen" }}
+          >
+            <h2 className="font-[Montserrat] !text-[16vw] md:text-[14vw] font-black leading-[0.85] tracking-tight text-center text-black">
+              WELCOME
+            </h2>
+          </div>
+        )}
+
+      </section>
     </>
   );
 }
 
-/* ═══════════════════════════════════════════
-   SEARCH BAR — reused in hero + sticky bar
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════ */
 function SearchBar({
   selectedType,
   setSelectedType,
@@ -121,47 +151,29 @@ function SearchBar({
   dropdownOpen,
   setDropdownOpen,
   dropdownRef,
+  listingTypes,
 }) {
-  const LISTING_TYPES = ["For sale", "For rent", "New homes"];
-
   return (
     <div className="flex items-center bg-white rounded-full shadow-2xl overflow-visible px-2 py-2 gap-2">
-
-      {/* ── Type Dropdown ── */}
       <div className="relative flex-shrink-0" ref={dropdownRef}>
         <button
           onClick={() => setDropdownOpen((p) => !p)}
-          className="flex items-center gap-1 px-4 py-2 rounded-full font-semibold text-[#1B304B] text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
+          className="flex items-center gap-1 px-4 py-2 rounded-full font-semibold text-[#1B304B] text-sm hover:bg-gray-100 whitespace-nowrap"
         >
           {selectedType}
-          <svg
-            className={`w-4 h-4 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2.5}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          <svg className={`w-4 h-4 ${dropdownOpen ? "rotate-180" : ""}`} viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7" stroke="currentColor" strokeWidth={2.5} fill="none" />
           </svg>
         </button>
-
-        {/* Dropdown menu */}
         {dropdownOpen && (
-          <div className="absolute top-full left-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50 min-w-[140px]">
-            {LISTING_TYPES.map((type) => (
+          <div className="absolute top-full left-0 mt-2 bg-white rounded-2xl shadow-xl border z-50 min-w-[140px]">
+            {listingTypes.map((type) => (
               <button
                 key={type}
-                onClick={() => {
-                  setSelectedType(type);
-                  setDropdownOpen(false);
-                }}
-                className={`
-                  w-full text-left px-4 py-3 text-sm font-medium transition-colors
-                  ${type === selectedType
-                    ? "bg-orange-50 text-orange-500"
-                    : "text-[#1B304B] hover:bg-gray-50"
-                  }
-                `}
+                onClick={() => { setSelectedType(type); setDropdownOpen(false); }}
+                className={`w-full text-left px-4 py-3 text-sm ${
+                  type === selectedType ? "bg-orange-50 text-orange-500" : "hover:bg-gray-50"
+                }`}
               >
                 {type}
               </button>
@@ -169,43 +181,15 @@ function SearchBar({
           </div>
         )}
       </div>
-
-      {/* Divider */}
-      <div className="w-px h-6 bg-gray-200 flex-shrink-0" />
-
-      {/* ── Search Input ── */}
+      <div className="w-px h-6 bg-gray-200" />
       <input
-        type="text"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Place, neighborhood, school or agent..."
-        className="flex-1 bg-transparent outline-none text-sm text-gray-700 placeholder-gray-400 min-w-0 px-2"
+        className="flex-1 bg-transparent outline-none text-sm px-2"
       />
-
-      {/* ── Filter icon ── */}
-      <button className="flex-shrink-0 p-2 rounded-full bg-orange-50 hover:bg-orange-100 transition-colors">
-        <svg
-          className="w-5 h-5 text-[var(--color-primary)]"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3 4h18M7 8h10M10 12h4"
-          />
-        </svg>
-      </button>
-
-      {/* ── Search Button ── */}
-      <button className="flex-shrink-0 flex items-center gap-2 bg-[var(--color-primary)] hover:bg-orange-600 active:scale-95 text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-200 shadow-md">
+      <button className="px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-full">
         Search
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-          <circle cx="11" cy="11" r="8" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35" />
-        </svg>
       </button>
     </div>
   );

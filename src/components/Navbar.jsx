@@ -36,7 +36,7 @@ export default function Navbar({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white shadow-[0_2px_20px_rgba(27,48,75,0.08)] border-b border-[#eaecf4]">
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
 
@@ -61,7 +61,7 @@ export default function Navbar({
           </Link>
 
           {/* ================= DESKTOP NAV ================= */}
-          <nav className="hidden md:flex items-center gap-8 text-nav">
+          <p className="hidden md:flex items-center gap-8 text-nav">
             {navLinks.map((item, index) => (
               <Link
                 key={index}
@@ -71,7 +71,7 @@ export default function Navbar({
                 {item.label}
               </Link>
             ))}
-          </nav>
+          </p>
 
           {/* ================= CTA ================= */}
           <div className="hidden md:block">
