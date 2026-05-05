@@ -69,7 +69,7 @@ export default function PropertyTypes({ PROPERTY_TYPES }) {
   );
 
   return (
-    <section style={{ background: "#1B304B", width: "100%" }}>
+    <section data-navy-bg style={{ background: "#1B304B", width: "100%" }}>
       <style>{hoverStyle}</style>
 
       {/* Mobile: stacked */}
