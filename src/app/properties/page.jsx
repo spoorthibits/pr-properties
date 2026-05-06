@@ -1,6 +1,7 @@
 export default function properties() {
-
-    <>
-    Properties
-    </>
+    return(
+        <>
+        <h1 className="p-9 mt-8">Properties</h1>
+        </>
+    )
 }
