@@ -10,7 +10,7 @@ export default function FAQSection({ faqData = [] }) {
 
   return (
     <section
-      className="relative py-20 md:py-26 bg-offwhite
+      className="relative py-20 md:py-26 bg-[var(--color-offwhite)]
       bg-[linear-gradient(rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.04)_1px,transparent_1px)]
       bg-[size:40px_40px]"
     >

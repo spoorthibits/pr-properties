@@ -196,7 +196,7 @@ export default function Home() {
       "Thousands of luxury home enthusiasts just like you visit our website. List with us and get matched to the right buyers instantly.",
     buttonLabel: "Request your free appraisal",
     buttonHref: "/appraisal",
-    image: "/assets/agent.png",
+    image: "/assets/agent_img-removebg-preview.png",
   };
 
 
