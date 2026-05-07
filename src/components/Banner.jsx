@@ -13,24 +13,20 @@ export default function HeroBanner({
   listingTypes = DEFAULT_LISTING_TYPES,
   defaultType = "For sale",
 }) {
-  // ── Intro state ──────────────────────────────────────────────────────────
   const [zoom, setZoom] = useState(false);
   const [introVisible, setIntroVisible] = useState(true);
 
-  // ── HeroBanner state ─────────────────────────────────────────────────────
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedType, setSelectedType] = useState(defaultType);
   const [searchValue, setSearchValue] = useState("");
   const [contentVisible, setContentVisible] = useState(false);
   const dropdownRef = useRef(null);
 
-  // ── Trigger zoom at 200ms ────────────────────────────────────────────────
   useEffect(() => {
     const t = setTimeout(() => setZoom(true), 200);
     return () => clearTimeout(t);
   }, []);
 
-  // ── Remove intro + show hero content after animation ends ────────────────
   useEffect(() => {
     if (!zoom) return;
     const t = setTimeout(() => {
@@ -40,7 +36,6 @@ export default function HeroBanner({
     return () => clearTimeout(t);
   }, [zoom]);
 
-  // ── Outside click for dropdown ───────────────────────────────────────────
   useEffect(() => {
     const handler = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target))
@@ -67,7 +62,6 @@ export default function HeroBanner({
 
       <section className="relative h-[100vh] min-h-[520px] overflow-hidden">
 
-        {/* ── Background ── */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -76,10 +70,8 @@ export default function HeroBanner({
           }}
         />
 
-        {/* ── Overlay ── */}
         <div className={`absolute inset-0 ${overlay}`} />
 
-        {/* ── Hero Content ── */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
           {title && (
             <h1
@@ -105,7 +97,7 @@ export default function HeroBanner({
           )}
           {showSearch && (
             <div
-              className="mt-8 w-full max-w-2xl transition-all duration-700 ease-out delay-300"
+              className="mt-8 w-full max-w-2xl px-4 transition-all duration-700 ease-out delay-300"
               style={{
                 opacity: contentVisible ? 1 : 0,
                 transform: contentVisible ? "translateY(0)" : "translateY(20px)",
@@ -125,7 +117,6 @@ export default function HeroBanner({
           )}
         </div>
 
-        {/* ── Intro Overlay ── */}
         {introVisible && (
           <div
             className={`absolute inset-0 z-50 flex items-center justify-center bg-white select-none pointer-events-none${zoom ? " vtm-overlay-zoom" : ""}`}
@@ -142,7 +133,6 @@ export default function HeroBanner({
   );
 }
 
-/* ═══════════════════════════════════════════ */
 function SearchBar({
   selectedType,
   setSelectedType,
@@ -181,14 +171,14 @@ function SearchBar({
           </div>
         )}
       </div>
-      <div className="w-px h-6 bg-gray-200" />
+      <div className="w-px h-6 bg-gray-200 flex-shrink-0" />
       <input
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Place, neighborhood, school or agent..."
-        className="flex-1 bg-transparent outline-none text-sm px-2"
+        className="flex-1 min-w-0 bg-transparent outline-none text-sm px-2"
       />
-      <button className="px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-full">
+      <button className="flex-shrink-0 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-full text-sm">
         Search
       </button>
     </div>
