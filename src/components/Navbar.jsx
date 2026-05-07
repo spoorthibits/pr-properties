@@ -13,6 +13,7 @@ const DEFAULT_LOGO = {
 
 const DEFAULT_LINKS = [
   { label: "Home", href: "/" },
+   { label: "Listings", href: "/Listings" },
   { label: "About Us", href: "/about-us" },
   { label: "Our Properties", href: "/properties" },
   { label: "Our Services", href: "/services" },
