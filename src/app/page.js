@@ -100,7 +100,7 @@ export default function Home() {
   const PROPERTIES = [
     {
       id: 1,
-      image: { src: "/assets/home1.jpg", alt: "Elegant studio flat" },
+      image: { src: "/assets/openlands-nri.jpg", alt: "Elegant studio flat" },
       badges: [
         { label: "Featured", variant: "featured" },
         { label: "For Sale", variant: "status" },
@@ -115,7 +115,7 @@ export default function Home() {
     },
     {
       id: 2,
-      image: { src: "/assets/home2.jpg", alt: "Elegant studio flat" },
+      image: { src: "/assets/sampangiland.webp", alt: "Elegant studio flat" },
       badges: [
         { label: "Featured", variant: "featured" },
         { label: "For Sale", variant: "status" },
@@ -130,7 +130,7 @@ export default function Home() {
     },
     {
       id: 3,
-      image: { src: "/assets/home3.jpg", alt: "Elegant studio flat" },
+      image: { src: "/assets/nsp-1.jpg", alt: "Elegant studio flat" },
       badges: [
         { label: "Featured", variant: "featured" },
         { label: "For Sale", variant: "status" },

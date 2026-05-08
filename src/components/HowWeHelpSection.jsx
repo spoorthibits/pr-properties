@@ -123,7 +123,6 @@ export default function HowWeHelpSection({
   const [imgFading,   setImgFading]   = useState(false);
   const [winH,        setWinH]        = useState(800);
   const [cardH,       setCardH]       = useState(500);
-  // Mobile carousel state
   const [mobileIdx,   setMobileIdx]   = useState(0);
 
   const imgTimerRef   = useRef(null);
@@ -134,7 +133,6 @@ export default function HowWeHelpSection({
   const wheelBusyRef  = useRef(false);
   const wrapperRef    = useRef(null);
   const stickyRef     = useRef(null);
-  // Track if we're in "exit mode" — last card reached, next scroll releases sticky
   const exitModeRef   = useRef(false);
 
   const cards = cardsByTab[activeTab] || [];
@@ -144,7 +142,6 @@ export default function HowWeHelpSection({
   useEffect(() => { activeIdxRef.current = activeIdx; }, [activeIdx]);
   useEffect(() => { displayIdxRef.current = displayIdx; }, [displayIdx]);
 
-  // Measure window + card heights
   useEffect(() => {
     const measure = () => {
       setWinH(window.innerHeight);
@@ -188,7 +185,6 @@ export default function HowWeHelpSection({
     }, 4500);
   };
 
-  // Reset on tab change
   useEffect(() => {
     setActiveIdx(0);
     activeIdxRef.current = 0;
@@ -198,10 +194,9 @@ export default function HowWeHelpSection({
     if (cardsColRef.current) cardsColRef.current.scrollTop = 0;
     startImgTimer();
     return () => clearInterval(imgTimerRef.current);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
-  // WHEEL HANDLER — fixed exit logic
   useEffect(() => {
     const sticky = stickyRef.current;
     const wrapper = wrapperRef.current;
@@ -215,19 +210,9 @@ export default function HowWeHelpSection({
       const last     = cardsLenRef.current - 1;
 
       if (!isPinned) return;
+      if (down && cur >= last) return;
+      if (!down && cur <= 0) return;
 
-      // Already at last card scrolling down → release (do nothing, let page scroll naturally)
-      if (down && cur >= last) {
-        // Don't preventDefault — let the page scroll past
-        return;
-      }
-
-      // Already at first card scrolling up → release
-      if (!down && cur <= 0) {
-        return;
-      }
-
-      // Otherwise intercept and step through cards
       e.preventDefault();
       if (wheelBusyRef.current) return;
       wheelBusyRef.current = true;
@@ -242,7 +227,7 @@ export default function HowWeHelpSection({
 
     window.addEventListener("wheel", onWheel, { passive: false });
     return () => window.removeEventListener("wheel", onWheel);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardH]);
 
   const handleCardClick = (i) => {
@@ -252,13 +237,8 @@ export default function HowWeHelpSection({
     crossfadeImgTo(i);
   };
 
-  // Mobile carousel navigation
-  const handleMobilePrev = () => {
-    setMobileIdx((prev) => Math.max(0, prev - 1));
-  };
-  const handleMobileNext = () => {
-    setMobileIdx((prev) => Math.min(cards.length - 1, prev + 1));
-  };
+  const handleMobilePrev = () => setMobileIdx((prev) => Math.max(0, prev - 1));
+  const handleMobileNext = () => setMobileIdx((prev) => Math.min(cards.length - 1, prev + 1));
 
   const IMAGES = {
     buying: [
@@ -280,13 +260,13 @@ export default function HowWeHelpSection({
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
 
-        /* ── DESKTOP LAYOUT (≥768px) ── */
+        /* ── DESKTOP LAYOUT (≥1024px) ── */
         .hwh-desktop { display: none; }
-        @media (min-width: 768px) { .hwh-desktop { display: block; } }
+        @media (min-width: 1024px) { .hwh-desktop { display: block; } }
 
-        /* ── MOBILE LAYOUT (<768px) ── */
+        /* ── MOBILE + TABLET LAYOUT (<1024px) ── */
         .hwh-mobile { display: block; }
-        @media (min-width: 768px) { .hwh-mobile { display: none; } }
+        @media (min-width: 1024px) { .hwh-mobile { display: none; } }
 
         /* ========== DESKTOP STYLES ========== */
         .hwh-outer {
@@ -350,8 +330,10 @@ export default function HowWeHelpSection({
           cursor: pointer; background: transparent;
           color: #1B304B; font-family: 'Montserrat', sans-serif;
           transition: all .25s;
+          white-space: nowrap;
         }
         .hwh-tab.active { background: #1B304B; color: #fff; }
+        .hwh-tab:hover:not(.active) { background: rgba(27,48,75,0.06); }
 
         .hwh-cards-scroll {
           flex: 1;
@@ -449,7 +431,6 @@ export default function HowWeHelpSection({
         }
         .hwh-card.active .hwh-step-num { color: rgba(184,148,84,.14); }
 
-        /* RIGHT panel */
         .hwh-right {
           flex: 1;
           position: relative; overflow: hidden;
@@ -467,7 +448,6 @@ export default function HowWeHelpSection({
           background: linear-gradient(to right, rgba(255,255,255,.15) 0%, transparent 35%);
         }
 
-        /* 3-dot stepper — RIGHT panel */
         .hwh-stepper {
           position: absolute; right: 20px; top: 50%;
           transform: translateY(-50%);
@@ -484,23 +464,46 @@ export default function HowWeHelpSection({
           transform: scale(1.45);
         }
 
-        /* ========== MOBILE STYLES ========== */
+        /* ========== MOBILE + TABLET STYLES (<1024px) ========== */
         .hwh-mob-wrap {
           background: #F7F6F2;
           padding: 36px 20px 48px;
           display: flex;
           flex-direction: column;
           gap: 28px;
+          max-width: 720px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        @media (min-width: 640px) {
+          .hwh-mob-wrap { padding: 52px 40px 64px; }
         }
 
-        .hwh-mob-hdr .hwh-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #B89454; margin: 0 0 10px; display: block; }
-        .hwh-mob-hdr .hwh-heading { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 600; color: #1B304B; line-height: 1.2; margin: 0 0 10px; }
-        .hwh-mob-hdr .hwh-subhead { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 300; color: #6b7280; line-height: 1.7; margin: 0 0 20px; }
+        .hwh-mob-hdr .hwh-eyebrow {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px; font-weight: 500;
+          letter-spacing: .18em; text-transform: uppercase;
+          color: #B89454; margin: 0 0 10px; display: block;
+        }
+        .hwh-mob-hdr .hwh-heading {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.7rem; font-weight: 600;
+          color: #1B304B; line-height: 1.2; margin: 0 0 10px;
+        }
+        .hwh-mob-hdr .hwh-subhead {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 14px; font-weight: 300;
+          color: #6b7280; line-height: 1.7; margin: 0 0 20px;
+        }
 
-        /* Mobile tabs */
-        .hwh-mob-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+        .hwh-mob-tabs {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          row-gap: 8px;
+        }
 
-        /* Mobile single card — image on top, content below, all one card */
         .hwh-mob-card-wrap {
           background: #fff;
           border-radius: 16px;
@@ -509,7 +512,6 @@ export default function HowWeHelpSection({
           border: 1px solid #ece8e0;
         }
 
-        /* Image portion */
         .hwh-mob-img-box {
           position: relative;
           width: 100%;
@@ -524,7 +526,6 @@ export default function HowWeHelpSection({
         .hwh-mob-img.on  { opacity: 1; transform: scale(1); }
         .hwh-mob-img.off { opacity: 0; transform: scale(1.03); }
 
-        /* Content portion */
         .hwh-mob-content {
           padding: 24px 22px 28px;
           border-left: 4px solid #B89454;
@@ -550,7 +551,6 @@ export default function HowWeHelpSection({
           line-height: 1.8; font-weight: 300; margin: 0;
         }
 
-        /* Mobile nav row — arrows + counter */
         .hwh-mob-nav {
           display: flex; gap: 10px; align-items: center;
         }
@@ -571,7 +571,7 @@ export default function HowWeHelpSection({
         }
       `}</style>
 
-      {/* ── DESKTOP VERSION ── */}
+      {/* ── DESKTOP VERSION (≥1024px) ── */}
       <div
         ref={wrapperRef}
         style={{ position: "relative", height: `calc(100vh + ${EXTRA_H}px)` }}
@@ -591,7 +591,7 @@ export default function HowWeHelpSection({
                   <p className="hwh-eyebrow">How we help</p>
                   <h2 className="hwh-heading">{heading}</h2>
                   <p className="hwh-subhead">{subheading}</p>
-                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", rowGap: "8px" }}>
                     {tabs.map((tab) => (
                       <button
                         key={tab.key}
@@ -657,7 +657,6 @@ export default function HowWeHelpSection({
                   />
                 ))}
                 <div className="hwh-veil" />
-                {/* 3-dot stepper — no caption */}
                 <div className="hwh-stepper">
                   {cards.map((_, i) => (
                     <button
@@ -675,7 +674,7 @@ export default function HowWeHelpSection({
         </div>
       </div>
 
-      {/* ── MOBILE VERSION ── */}
+      {/* ── MOBILE + TABLET VERSION (<1024px) ── */}
       <div className={`hwh-mobile ${className}`}>
         <div className="hwh-mob-wrap">
 
@@ -700,7 +699,6 @@ export default function HowWeHelpSection({
           {/* Single card: image top + content bottom */}
           {cards[mobileIdx] && (
             <div className="hwh-mob-card-wrap">
-              {/* Image */}
               <div className="hwh-mob-img-box">
                 {currentImages.map((src, i) => (
                   <img
@@ -712,7 +710,6 @@ export default function HowWeHelpSection({
                 ))}
               </div>
 
-              {/* Content */}
               <div className="hwh-mob-content">
                 <span className="hwh-mob-step-label">Step 0{mobileIdx + 1} of 0{cards.length}</span>
                 <div className="hwh-mob-icon-row">
