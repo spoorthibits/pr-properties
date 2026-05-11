@@ -5,18 +5,18 @@ export default function About() {
   return (
     <div>
       <HeroBanner
-  title="About Us"
-  subtitle="Learn more about our journey"
-  backgroundImage="/assets/about-banner.jpg"
-  showSearch={false}
-/>
+        title="About Us"
+        subtitle="Learn more about our journey"
+        bgImage="/assets/about_banner.jpg"
+        showSearch={false}
+      />
 
  <SplitSection
-                    imagePosition="left"   // 🔥 change to "right" anytime
+                    imagePosition="left"  
 
                     images={[
-                        "/assets/img1.jpg",
-                        "/assets/img2.jpg",
+                        "/assets/splitImage1.webp",
+                        "/assets/splitImage2.webp",
                     ]}
 
                     title="Benefits when you work at Proty"
@@ -42,23 +42,24 @@ export default function About() {
 
                     buttonText="Join our team"
   />
-  <SplitSection
-      imagePosition="right"   // 🔥 flipped from previous
+ <SplitSection
+  imagePosition="right"
+  imageStyle="review"
 
-      images={[
-        "/assets/review-main.png",
-        "/assets/review-card.png",
-      ]}
+  images={[
+    "/assets/about-us.webp",
+  ]}
 
-      title="Reviews from employees working at Proty"
+  title="Reviews from employees working at Proty"
 
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin ipsum ullamcorper, pulvinar ipsum in, imperdiet ante."
+  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin ipsum ullamcorper, pulvinar ipsum in, imperdiet ante."
 
-      subText="Proin pharetra rhoncus maximus. Sed est dolor, consectetur eu sagittis a"
+  subText="Proin pharetra rhoncus maximus. Sed est dolor, consectetur eu sagittis a"
 
-      features={[]}  
-      buttonText="More stories"
-    />
+  features={[]}
+
+  buttonText="More stories"
+/>
     </div>
   );
 }
