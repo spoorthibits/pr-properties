@@ -80,13 +80,7 @@ export default function CompaniesPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Header */}
-      {/* <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="container-custom">
-          
-        </div>
-      </header> */}
-
+      
       {/* Hero Section */}
       <section className="section" style={{ backgroundColor: 'var(--color-offwhite)' }}>
         <div className="container-custom text-center">
