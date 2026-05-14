@@ -4,61 +4,71 @@ import SplitSection from "@/components/SplitSection";
 export default function About() {
   return (
     <div>
+
+      {/* HERO BANNER */}
       <HeroBanner
-  title="About Us"
-  subtitle="Learn more about our journey"
-  backgroundImage="/assets/about-banner.jpg"
-  showSearch={false}
-/>
+        title="About Us"
+        subtitle="Learn more about our journey"
+        bgImage="/assets/about_banner.jpg"
+        showSearch={false}
+      />
 
- <SplitSection
-                    imagePosition="left"   // 🔥 change to "right" anytime
+      {/* FIRST SPLIT SECTION WITH BACKGROUND */}
+      <SplitSection
+        showBackground={false}
 
-                    images={[
-                        "/assets/img1.jpg",
-                        "/assets/img2.jpg",
-                    ]}
+        imagePosition="left"
 
-                    title="Benefits when you work at Proty"
+        images={[
+          "/assets/splitImage1.webp",
+          "/assets/splitImage2.webp",
+        ]}
 
-                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin ipsum ullamcorper..."
+        title="Benefits when you work at Proty"
 
-                    subText="Proin pharetra rhoncus maximus. Sed est dolor..."
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin ipsum ullamcorper..."
 
-                    features={[
-                        {
-                        icon: "❤️",
-                        label: "Health care",
-                        },
-                        {
-                        icon: "💰",
-                        label: "Attractive salary and bonus",
-                        },
-                        {
-                        icon: "👨‍👩‍👧",
-                        label: "Family life",
-                        },
-                    ]}
+        subText="Proin pharetra rhoncus maximus. Sed est dolor..."
 
-                    buttonText="Join our team"
-  />
-  <SplitSection
-      imagePosition="right"   // 🔥 flipped from previous
+        features={[
+          {
+            icon: "❤️",
+            label: "Health care",
+          },
+          {
+            icon: "💰",
+            label: "Attractive salary and bonus",
+          },
+          {
+            icon: "👨‍👩‍👧",
+            label: "Family life",
+          },
+        ]}
 
-      images={[
-        "/assets/review-main.png",
-        "/assets/review-card.png",
-      ]}
+        buttonText="Join our team"
+      />
 
-      title="Reviews from employees working at Proty"
+      {/* SECOND REVIEW SECTION WITHOUT BACKGROUND */}
+      <SplitSection
+        imagePosition="right"
+        imageStyle="review"
+        showBackground={true}
 
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin ipsum ullamcorper, pulvinar ipsum in, imperdiet ante."
+        images={[
+          "/assets/about-us.webp",
+        ]}
 
-      subText="Proin pharetra rhoncus maximus. Sed est dolor, consectetur eu sagittis a"
+        title="Reviews from employees working at Proty"
 
-      features={[]}  
-      buttonText="More stories"
-    />
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin ipsum ullamcorper, pulvinar ipsum in, imperdiet ante."
+
+        subText="Proin pharetra rhoncus maximus. Sed est dolor, consectetur eu sagittis a"
+
+        features={[]}
+
+        buttonText="More stories"
+      />
+  
     </div>
   );
 }

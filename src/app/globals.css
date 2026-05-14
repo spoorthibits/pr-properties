@@ -5,7 +5,7 @@
 @layer theme {
   :root {
     --color-primary: #1B304B;   /* Navy Blue */
-    --color-gold: #B89454;      /* Gold/Bronze */
+    --color-gold: #b78f4a;      /* Gold/Bronze */
     --color-lightgold: #D4B982; /* Light Gold */
     --color-text: #1f2937;
     --color-muted: #6b7280;

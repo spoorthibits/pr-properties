@@ -6,7 +6,7 @@ import PropertyCard from "@/components/PropertyCard";
 import PropertiesGrid from "@/components/PropertiesGrid";
 import HowWeHelpSection from "@/components/HowWeHelpSection";
 import ScrollingLogos from "@/components/LogoGridSection";
-import FAQSection from "@/components/Faq";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const properties = [
@@ -212,6 +212,7 @@ export default function Home() {
         logos={LOGOS}
         cta={SCROLLING_CTA}
       />
+      <Footer waveBg="#f5f5f0" />    
       
     </div>
   );

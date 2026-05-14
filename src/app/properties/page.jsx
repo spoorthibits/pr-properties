@@ -1,183 +1,44 @@
-import React from 'react';
-import { Building2, MapPin, Home, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 
-export default function CompaniesPage() {
-  const companies = [
-    {
-      id: 1,
-      name: "Skyline Developers",
-      logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=200&fit=crop",
-      description: "Premium luxury residences and commercial spaces across major metropolitan areas",
-      projects: 12,
-      properties: 450,
-      location: "New York, NY",
-      established: "2010",
-      rating: 4.8,
-      featured: true
-    },
-    {
-      id: 2,
-      name: "Urban Living Properties",
-      logo: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop",
-      description: "Modern urban apartments and condominiums for contemporary lifestyle",
-      projects: 8,
-      properties: 320,
-      location: "Brooklyn, NY",
-      established: "2015",
-      rating: 4.6,
-      featured: true
-    },
-    {
-      id: 3,
-      name: "Green Valley Estates",
-      logo: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=200&h=200&fit=crop",
-      description: "Sustainable living communities with eco-friendly homes and amenities",
-      projects: 15,
-      properties: 580,
-      location: "Queens, NY",
-      established: "2008",
-      rating: 4.9,
-      featured: false
-    },
-    {
-      id: 4,
-      name: "Prestige Realty Group",
-      logo: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200&h=200&fit=crop",
-      description: "High-end luxury estates and penthouses for discerning clients",
-      projects: 6,
-      properties: 180,
-      location: "Manhattan, NY",
-      established: "2012",
-      rating: 4.7,
-      featured: true
-    },
-    {
-      id: 5,
-      name: "Riverside Constructions",
-      logo: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=200&h=200&fit=crop",
-      description: "Waterfront properties and scenic residential developments",
-      projects: 10,
-      properties: 420,
-      location: "Jersey City, NJ",
-      established: "2013",
-      rating: 4.5,
-      featured: false
-    },
-    {
-      id: 6,
-      name: "Metropolitan Homes",
-      logo: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
-      description: "Affordable housing solutions with quality construction and amenities",
-      projects: 20,
-      properties: 750,
-      location: "Bronx, NY",
-      established: "2005",
-      rating: 4.4,
-      featured: false
-    }
-  ];
+"use client";
+import { useState } from "react";
+import ListingCard from "@/components/ListingCard";
+import Link from "next/link";
 
-  return (
-    <div className="bg-white min-h-screen">
-      {/* Header */}
-      {/* <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="container-custom">
-          
-        </div>
-      </header> */}
+export default function properties() {
+    const [viewColumns, setViewColumns] = useState(3);
 
-      {/* Hero Section */}
-      <section className="section" style={{ backgroundColor: 'var(--color-offwhite)' }}>
-        <div className="container-custom text-center">
-          <h1 className="mb-6">Trusted Real Estate Companies</h1>
-          <p className="text-xl max-w-3xl mx-auto mb-8">
-            Explore our network of premium real estate developers and find your perfect property from industry-leading companies
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="flex items-center gap-3 px-6 py-3 bg-white rounded-lg shadow-sm">
-              <Building2 className="w-6 h-6" style={{ color: 'var(--color-gold)' }} />
-              <div className="text-left">
-                <div className="text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--color-primary)' }}>50+</div>
-                <div className="text-sm" style={{ color: 'var(--color-muted)' }}>Companies</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 px-6 py-3 bg-white rounded-lg shadow-sm">
-              <Home className="w-6 h-6" style={{ color: 'var(--color-gold)' }} />
-              <div className="text-left">
-                <div className="text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--color-primary)' }}>2,500+</div>
-                <div className="text-sm" style={{ color: 'var(--color-muted)' }}>Properties</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    return (
+        <div className="container-custom pt-28 pb-10">
+            {/* Breadcrumbs */}
 
-      {/* Featured Companies */}
-      <section className="section">
-        <div className="container-custom">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="mb-2">Featured Companies</h2>
-              <p style={{ color: 'var(--color-muted)' }}>Top-rated developers with exceptional track records</p>
-            </div>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {companies.filter(c => c.featured).map((company) => (
-              <Link 
-                key={company.id} 
-                href={`/companies/${company.id}`}
-                className="card group cursor-pointer transition-all duration-300 hover:shadow-2xl"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={company.logo} 
-                    alt={company.name}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                    <span>⭐</span>
-                    <span>{company.rating}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3 group-hover:text-gold transition-colors">{company.name}</h3>
-                  <p className="text-sm mb-4 line-clamp-2">{company.description}</p>
-                  
-                  <div className="flex items-center gap-2 mb-4 text-sm" style={{ color: 'var(--color-muted)' }}>
-                    <MapPin className="w-4 h-4" />
-                    <span>{company.location}</span>
-                  </div>
+            {/* Header Section */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+                <h1 className="text-3xl md:text-[40px] font-bold text-[#1B304B] font-['Playfair_Display',serif]">
+                    Property listing
+                </h1>
 
-                  <div className="grid grid-cols-3 gap-4 mb-4 pb-4 border-b border-gray-200">
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.projects}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Projects</div>
+                {/* Controls */}
+                <div className="flex flex-wrap items-center gap-3">
+                    {/* Filter Button */}
+                    <button className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-md text-[#1B304B] font-medium hover:border-primary hover:text-primary transition-colors shadow-sm">
+                        Filter
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="gold" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="4" y1="21" y2="14" /><line x1="4" x2="4" y1="10" y2="3" /><line x1="12" x2="12" y1="21" y2="12" /><line x1="12" x2="12" y1="8" y2="3" /><line x1="20" x2="20" y1="21" y2="16" /><line x1="20" x2="20" y1="12" y2="3" /><line x1="2" x2="6" y1="14" y2="14" /><line x1="10" x2="14" y1="8" y2="8" /><line x1="18" x2="22" y1="16" y2="16" /></svg>
+                    </button>
+
+                    {/* View Toggles */}
+                    <div className="flex items-center gap-2">
+                        <button 
+                            onClick={() => setViewColumns(3)}
+                            className={`flex items-center justify-center w-[42px] h-[42px] rounded-md transition-colors shadow-sm ${viewColumns === 3 ? 'bg-primary text-white' : 'bg-white border border-gray-200 text-gray-400 hover:border-primary hover:text-primary'}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 10h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 16h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4z" /></svg>
+                        </button>
+                        <button 
+                            onClick={() => setViewColumns(2)}
+                            className={`flex items-center justify-center w-[42px] h-[42px] rounded-md transition-colors shadow-sm ${viewColumns === 2 ? 'bg-primary text-white' : 'bg-white border border-gray-200 text-gray-400 hover:border-primary hover:text-primary'}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="8" x2="21" y1="6" y2="6" /><line x1="8" x2="21" y1="12" y2="12" /><line x1="8" x2="21" y1="18" y2="18" /><line x1="3" x2="3.01" y1="6" y2="6" /><line x1="3" x2="3.01" y1="12" y2="12" /><line x1="3" x2="3.01" y1="18" y2="18" /></svg>
+                        </button>
                     </div>
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.properties}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Properties</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.established}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Est.</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium" style={{ color: 'var(--color-gold)' }}>View Projects</span>
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" style={{ color: 'var(--color-gold)' }} />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* All Companies */}
-          <div className="mb-8">
-            <h2 className="mb-6">All Companies</h2>
-          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {companies.filter(c => !c.featured).map((company) => (
@@ -221,16 +82,17 @@ export default function CompaniesPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium" style={{ color: 'var(--color-gold)' }}>View Projects</span>
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" style={{ color: 'var(--color-gold)' }} />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+            {/* Grid of Listing Cards */}
+            <div className={`grid grid-cols-1 md:grid-cols-2 ${viewColumns === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'} gap-10`}>
+                <ListingCard layout={viewColumns === 2 ? 'list' : 'grid'} />
+                <ListingCard layout={viewColumns === 2 ? 'list' : 'grid'} />
+                <ListingCard layout={viewColumns === 2 ? 'list' : 'grid'} />
+                <ListingCard layout={viewColumns === 2 ? 'list' : 'grid'} />
+                <ListingCard layout={viewColumns === 2 ? 'list' : 'grid'} />
+                <ListingCard layout={viewColumns === 2 ? 'list' : 'grid'} />
+            </div>
         </div>
-      </section>
-    </div>
-  );
-}
+       
+    );
+
+            }
