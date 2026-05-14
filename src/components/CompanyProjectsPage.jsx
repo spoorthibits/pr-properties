@@ -115,25 +115,7 @@ export default function CompanyProjectsPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Header */}
-      {/* <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="container-custom">
-          <div className="flex justify-between items-center py-6">
-            <Link href="/" className="flex items-center gap-2 text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--color-primary)' }}>
-              <Building2 className="w-8 h-8" />
-              DREAM PROPERTIES
-            </Link>
-            <nav className="hidden md:flex items-center gap-8">
-              <Link href="/" className="text-nav hover:text-primary transition-colors" style={{ color: 'var(--color-muted)' }}>Home</Link>
-              <Link href="/companies" className="text-nav transition-colors" style={{ color: 'var(--color-primary)' }}>Companies</Link>
-              <Link href="/properties" className="text-nav hover:text-primary transition-colors" style={{ color: 'var(--color-muted)' }}>Properties</Link>
-              <Link href="/about" className="text-nav hover:text-primary transition-colors" style={{ color: 'var(--color-muted)' }}>About Us</Link>
-              <Link href="/contact" className="text-nav hover:text-primary transition-colors" style={{ color: 'var(--color-muted)' }}>Contact</Link>
-              <button className="btn-primary">List Your Property</button>
-            </nav>
-          </div>
-        </div>
-      </header> */}
+     
 
       {/* Company Hero */}
       <section className="relative h-[530px] overflow-hidden">
