@@ -2,6 +2,7 @@ import HeroBanner from "@/components/HomeBanner";
 import ContactForm from "@/components/ContactForm";
 import SplitSection from "@/components/SplitSection";
 import LogoGridSection from "@/components/LogoGridSection";
+import Footer from "@/components/Footer";
 
 export default function contact() {
   return (
@@ -20,7 +21,7 @@ export default function contact() {
           buttonText="Contact our experts"
         />
         
-        <LogoGridSection 
+        {/* <LogoGridSection 
           title="Let’s Work Together"
           subtitle="Thousands of luxury home enthusiasts just like you visit our website."
           logos={[
@@ -34,7 +35,8 @@ export default function contact() {
             "/assets/logo8.png",
           ]}
           showFAQ={false}
-        />
+        /> */}
+        <Footer/>
       </div>
     </>
   );

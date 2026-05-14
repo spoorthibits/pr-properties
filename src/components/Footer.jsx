@@ -27,13 +27,13 @@ const ChevronRight = () => (
   </svg>
 );
 
-const WaveDivider = () => (
+const WaveDivider = ({ bg = "transparent" }) => (
   <svg
     viewBox="0 0 1200 80"
     preserveAspectRatio="none"
     xmlns="http://www.w3.org/2000/svg"
     className="w-full block"
-    style={{ marginBottom: "-1px", backgroundColor: "#f5f5f0" }}
+    style={{ marginBottom: "-1px", backgroundColor: bg }}
   >
     <path
       d="M0,40 C150,80 350,0 600,40 C850,80 1050,0 1200,40 L1200,80 L0,80 Z"
@@ -41,7 +41,6 @@ const WaveDivider = () => (
     />
   </svg>
 );
-
 function FooterLink({ href, children }) {
   const handleEnter = (e) => {
     e.currentTarget.style.color = "var(--color-gold)";
@@ -63,10 +62,10 @@ function FooterLink({ href, children }) {
   );
 }
 
-export default function Footer() {
+export default function Footer({ showWave = true, waveBg }) {
   return (
     <footer>
-      <WaveDivider />
+      {showWave && <WaveDivider bg={waveBg} />}
 
       <div className="bg-primary mb-[70px] md:mb-0">
         <div className="container-custom">

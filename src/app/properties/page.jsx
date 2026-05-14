@@ -3,11 +3,13 @@
 import { useState } from "react";
 import ListingCard from "@/components/ListingCard";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 export default function properties() {
     const [viewColumns, setViewColumns] = useState(3);
 
     return (
+        <>
         <div className="container-custom pt-28 pb-10">
             {/* Breadcrumbs */}
 
@@ -57,6 +59,9 @@ export default function properties() {
                 <ListingCard layout={viewColumns === 2 ? 'list' : 'grid'} />
                 <ListingCard layout={viewColumns === 2 ? 'list' : 'grid'} />
             </div>
+            
         </div>
+        <Footer/>
+        </>
     );
 }
