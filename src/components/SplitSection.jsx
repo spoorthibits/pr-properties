@@ -27,21 +27,22 @@ export default function SplitSection({
               order-1
             `}
           >
+
             {/* ================= REVIEW STYLE ================= */}
             {imageStyle === "review" ? (
 
-              <div className="relative w-full max-w-[580px] mx-auto">
+              <div className="relative w-full max-w-[620px] mx-auto">
 
-                {/* ── Upper area: circle bg + person photo + floating badges ── */}
-                <div className="relative w-full" style={{ paddingBottom: "2%" }}>
+                {/* ───────────────── TOP SECTION ───────────────── */}
+                <div className="relative w-full pb-6">
 
-                  {/* Large circle — positioned top-right */}
+                  {/* Circle Background */}
                   <div
                     className="
                       absolute
                       top-0
-                      right-[2%]
-                      w-[76%]
+                      right-[10%]
+                      w-[72%]
                       aspect-square
                       rounded-full
                       bg-[#EDE4D7]
@@ -49,83 +50,80 @@ export default function SplitSection({
                     "
                   />
 
-                  {/* Person image — no background, transparent cutout style */}
-                  {/* Positioned to the right so circle peeks around them */}
+                  {/* Person Image */}
                   <div
                     className="
                       relative
                       z-10
-                      ml-auto
-                      w-[60%]
-                      sm:w-[56%]
-                      mr-[4%]
+                      mx-auto
+                      w-[72%]
+                      sm:w-[66%]
+                      lg:w-[62%]
                     "
                   >
                     <Image
                       src={images[0]}
                       alt="review person"
-                      width={380}
-                      height={480}
+                      width={420}
+                      height={520}
                       className="w-full h-auto object-contain"
                       priority
                     />
                   </div>
 
-                  {/* User Card — top-left, overlapping circle edge */}
+                  {/* Floating User Card */}
                   <div
                     className="
                       absolute
-                      top-[12%]
-                      left-0
+                      top-[10%]
+                      left-[2%]
                       z-20
                       bg-white
                       rounded-2xl
                       shadow-lg
-                      px-3
+                      px-4
                       py-3
                       flex
                       items-center
                       gap-3
-                      min-w-[170px]
-                      sm:min-w-[205px]
+                      min-w-[190px]
+                      sm:min-w-[220px]
                     "
                   >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
+                    <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
                       <Image
                         src="/assets/avatar1.jpg"
                         alt="avatar"
                         width={60}
                         height={60}
-                        className="object-cover w-full h-full"
+                        className="w-full h-full object-cover"
                       />
                     </div>
+
                     <div>
-                      <p className="text-[13px] sm:text-[15px] font-semibold leading-none text-gray-900">
+                      <p className="text-[15px] sm:text-[18px] font-semibold text-gray-900 leading-none">
                         Cody Fisher
                       </p>
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 mt-1">
+
+                      <p className="text-[12px] text-gray-500 mt-1">
                         CEO Themesflat
                       </p>
                     </div>
                   </div>
 
-                  {/* Stars Badge — right side, vertically centred on the person */}
+                  {/* Floating Stars */}
                   <div
                     className="
                       absolute
-                      top-[40%]
-                      right-0
-                      sm:-right-2
+                      top-[36%]
+                      right-[4%]
                       z-20
                       bg-white
                       rounded-2xl
                       shadow-md
-                      px-3
-                      sm:px-4
-                      py-2
-                      sm:py-2.5
-                      text-sm
-                      sm:text-[17px]
+                      px-4
+                      py-3
+                      text-[16px]
                       whitespace-nowrap
                     "
                   >
@@ -133,51 +131,72 @@ export default function SplitSection({
                   </div>
                 </div>
 
-                {/* ── Bottom Review Card — full width, below the image area ── */}
+                {/* ───────────────── REVIEW CARD ───────────────── */}
                 <div
                   className="
                     relative
                     z-20
                     bg-white
-                    rounded-[22px]
-                    sm:rounded-[30px]
+                    rounded-[26px]
                     shadow-xl
-                    p-5
-                    sm:p-7
+                    p-6
+                    sm:p-8
                     w-full
+                    -mt-4
                   "
                 >
-                  <div className="text-base sm:text-xl leading-none">
-                    ⭐⭐⭐⭐⭐
-                  </div>
 
-                  <p className="mt-4 text-[13px] sm:text-[15px] leading-7 sm:leading-8 text-gray-600">
+                  {/* Stars */}
+                <div
+                    className="
+                      absolute
+                      top-[36%]
+                      left-[-10%]
+                      z-20
+                      bg-white
+                      rounded-2xl
+                      shadow-md
+                      px-4
+                      py-3
+                      text-[16px]
+                      whitespace-nowrap
+                    "
+                  >
+                ⭐⭐⭐⭐⭐
+                </div>
+
+                  {/* Review Text */}
+                  <p className="mt-5 text-[15px] sm:text-[16px] leading-8 text-gray-600">
                     Vivamus at nisl ornare, vulputate turpis finibus,
                     posuere metus. Donec in placerat felis. Praesent
                     ante tellus, dignissim nec imperdiet ac.
                   </p>
 
-                  <div className="flex items-center gap-3 sm:gap-4 mt-5 sm:mt-6">
-                    <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
+                  {/* Reviewer */}
+                  <div className="flex items-center gap-4 mt-7">
+
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
                       <Image
                         src="/assets/avatar2.jpg"
                         alt="avatar"
                         width={60}
                         height={60}
-                        className="object-cover w-full h-full"
+                        className="w-full h-full object-cover"
                       />
                     </div>
+
                     <div>
-                      <p className="text-[14px] sm:text-[17px] font-semibold leading-none text-gray-900">
+                      <p className="text-[16px] sm:text-[18px] font-semibold text-gray-900 leading-none">
                         Cody Fisher
                       </p>
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 mt-1">
+
+                      <p className="text-[12px] text-gray-500 mt-1">
                         CEO Themesflat
                       </p>
                     </div>
+
                   </div>
                 </div>
-
               </div>
 
             ) : (
@@ -193,6 +212,7 @@ export default function SplitSection({
                   lg:h-[620px]
                 "
               >
+
                 {/* BACK IMAGE */}
                 {images[1] && (
                   <div
@@ -215,6 +235,7 @@ export default function SplitSection({
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
+
                     <div
                       className="
                         absolute inset-0
@@ -248,6 +269,7 @@ export default function SplitSection({
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+
                   <div
                     className="
                       absolute inset-0
@@ -279,7 +301,10 @@ export default function SplitSection({
             {features && features.length > 0 && (
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 mt-10">
                 {features.map((item, i) => (
-                  <div key={i} className="group transition-all duration-300">
+                  <div
+                    key={i}
+                    className="group transition-all duration-300"
+                  >
                     <div
                       className="
                         w-16 h-16
@@ -295,6 +320,7 @@ export default function SplitSection({
                         {item.icon}
                       </div>
                     </div>
+
                     <h3 className="mt-4 transition-all duration-300 group-hover:text-[var(--color-gold)]">
                       {item.label}
                     </h3>
