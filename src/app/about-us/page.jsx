@@ -1,6 +1,5 @@
 import HeroBanner from "@/components/HomeBanner";
 import SplitSection from "@/components/SplitSection";
-import Footer from "@/components/Footer";
 
 export default function About() {
   return (
@@ -67,8 +66,9 @@ export default function About() {
 
         features={[]}
 
-  buttonText="More stories"
-/>
+        buttonText="More stories"
+      />
+  
     </div>
   );
 }
