@@ -14,7 +14,7 @@ const DEFAULT_LOGO = {
 const DEFAULT_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us" },
-  { label: "Our Properties", href: "/properties" },
+  { label: "Our Properties", href: "/companies" },
   { label: "Our Services", href: "/services" },
   { label: "Contact Us", href: "/contact" },
 ];

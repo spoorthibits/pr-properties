@@ -1,7 +1,9 @@
 import HeroBanner from "@/components/HomeBanner";
 import SplitSection from "@/components/SplitSection";
+import Footer from "@/components/Footer";
 
 export default function About() {
+  
   return (
     <div>
 
@@ -48,7 +50,9 @@ export default function About() {
         buttonText="Join our team"
       />
 
-      {/* SECOND REVIEW SECTION WITHOUT BACKGROUND */}
+     
+    
+       {/* SECOND REVIEW SECTION WITHOUT BACKGROUND */}
       <SplitSection
         imagePosition="right"
         imageStyle="review"
@@ -58,17 +62,20 @@ export default function About() {
           "/assets/about-us.webp",
         ]}
 
-        title="Reviews from employees working at Proty"
+        title="Making Every Client Feel at Home"
 
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin ipsum ullamcorper, pulvinar ipsum in, imperdiet ante."
+        description="We combine deep local market knowledge with a client-first approach to deliver results that exceed expectations. Whether you are buying your first home, upgrading, or investing in property, our team is with you every step of the way — from first call to final handover."
 
         subText="Proin pharetra rhoncus maximus. Sed est dolor, consectetur eu sagittis a"
 
         features={[]}
 
         buttonText="More stories"
-      />
-  
+         buttonLink="/about-us"
+      /> 
+
+     
+      <Footer waveBg="#f5f5f0" />    
     </div>
   );
 }

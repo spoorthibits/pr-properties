@@ -35,7 +35,6 @@ export default function SplitSection({
           : {}
       }
     >
-
       {/* ── MOBILE REVIEW FIXES ── */}
       <style>{`
         @media (max-width: 320px) {
@@ -108,7 +107,6 @@ export default function SplitSection({
 
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
           {/* ================= IMAGE SIDE ================= */}
           <div
             className={`
@@ -117,15 +115,11 @@ export default function SplitSection({
               order-1
             `}
           >
-
             {/* ================= REVIEW STYLE ================= */}
             {imageStyle === "review" ? (
-
               <div className="relative w-full max-w-[620px] mx-auto">
-
                 {/* TOP SECTION */}
                 <div className="review-wrapper relative w-full pt-4 pb-10 sm:pt-0 sm:pb-6">
-
                   {/* Circle */}
                   <div
                     className="
@@ -192,7 +186,6 @@ export default function SplitSection({
                       sm:min-w-[220px]
                     "
                   >
-
                     <div className="avatar w-8 h-8 sm:w-14 sm:h-14 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
                       <Image
                         src="/assets/user-profile.avif"
@@ -247,63 +240,8 @@ export default function SplitSection({
                 </div>
 
                 {/* REVIEW CARD */}
-                <div
-                  className="
-                    review-bottom-card
-                    relative
-                    z-20
-                    bg-white
-                    rounded-[26px]
-                    shadow-xl
-
-                    p-5
-                    sm:p-8
-
-                    w-full
-
-                    mt-4
-                    sm:-mt-14
-                  "
-                >
-
-                  <div className="text-[16px] sm:text-[18px]">
-                    ⭐⭐⭐⭐⭐
-                  </div>
-
-                  <p className="mt-4 sm:mt-5 text-[14px] sm:text-[16px] leading-8 text-gray-600">
-                    Vivamus at nisl ornare, vulputate turpis finibus,
-                    posuere metus. Donec in placerat felis. Praesent
-                    ante tellus, dignissim nec imperdiet ac.
-                  </p>
-
-                  <div className="flex items-center gap-3 sm:gap-4 mt-6 sm:mt-7">
-
-                    <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
-                      <Image
-                        src="/assets/user_profile2.avif"
-                        alt="avatar"
-                        width={60}
-                        height={60}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-
-                    <div>
-                      <p className="text-[15px] sm:text-[18px] font-semibold text-gray-900 leading-none">
-                        Cody Fisher
-                      </p>
-
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 mt-1">
-                        CEO Themesflat
-                      </p>
-                    </div>
-
-                  </div>
-                </div>
               </div>
-
             ) : (
-
               /* ================= NORMAL STYLE ================= */
               <div
                 className="
@@ -318,7 +256,6 @@ export default function SplitSection({
                   mx-auto
                 "
               >
-
                 {/* BACK IMAGE */}
                 {images[1] && (
                   <div
@@ -435,23 +372,15 @@ export default function SplitSection({
               max-[768px]:text-center
             `}
           >
+            <h2 className="mobile-center">{title}</h2>
 
-            <h2 className="mobile-center">
-              {title}
-            </h2>
+            <p className="mt-5 mobile-center">{description}</p>
 
-            <p className="mt-5 mobile-center">
-              {description}
-            </p>
-
-            <p className="mt-4 mobile-center">
-              {subText}
-            </p>
+            <p className="mt-4 mobile-center">{subText}</p>
 
             {/* FEATURES */}
             {features && features.length > 0 && (
               <div className="features-mobile grid grid-cols-2 sm:grid-cols-3 gap-8 mt-10">
-
                 {features.map((item, i) => (
                   <div
                     key={i}
@@ -462,7 +391,6 @@ export default function SplitSection({
                       duration-300
                     "
                   >
-
                     {/* ICON BOX */}
                     <div
                       className="
@@ -509,28 +437,28 @@ export default function SplitSection({
             {/* BUTTON */}
             {buttonText && (
               <div className="mt-8 max-[768px]:flex max-[768px]:justify-center">
-
                 <button
-                  className="
-                    btn-primary
-                    w-full sm:w-auto
-
-                    transition-all
-                    duration-300
-
-                    hover:bg-[var(--color-gold)]
-                    hover:text-white
-                    hover:-translate-y-1
-                    hover:shadow-xl
-                  "
+                    onClick={() =>
+                    buttonText === "More stories"
+                      ? window.location.href = "/about-us"
+                      : null
+                  }
+                    className="
+                      btn-primary
+                      w-full sm:w-auto
+                      transition-all
+                      duration-300
+                      hover:bg-[var(--color-gold)]
+                      hover:text-white
+                      hover:-translate-y-1
+                      hover:shadow-xl
+                    "
                 >
                   {buttonText}
                 </button>
-
               </div>
             )}
           </div>
-
         </div>
       </div>
     </section>
