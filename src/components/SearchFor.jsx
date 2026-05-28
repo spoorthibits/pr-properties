@@ -2,15 +2,29 @@
 
 export default function PropertyTypes({ PROPERTY_TYPES }) {
   const hoverStyle = `
-    .stat-item:hover .card-icon {
-      filter: brightness(0) invert(1);
-      opacity: 1;
+    .stat-item {
+      transition: all 0.3s ease;
     }
+
+    /* Icon color change */
+    .stat-item:hover .card-icon {
+      color: #D4B982 !important; /* Gold */
+    }
+
+    /* Heading change */
     .stat-item:hover .card-label {
+      color: #D4B982 !important;
+    }
+
+    /* Count text change */
+    .stat-item:hover .card-count {
       color: #ffffff !important;
     }
-    .stat-item:hover .card-count {
-      color: rgba(255, 255, 255, 0.65) !important;
+
+    .card-icon,
+    .card-label,
+    .card-count {
+      transition: color 0.3s ease;
     }
   `;
 
@@ -27,26 +41,25 @@ export default function PropertyTypes({ PROPERTY_TYPES }) {
         className="card-icon"
         style={{
           color: "rgba(255,255,255,0.85)",
-          transition: "opacity 0.3s ease",
         }}
       >
         {type.icon}
       </div>
+
       <div>
         <p
           className="card-label font-semibold text-base leading-tight"
           style={{
             color: "rgba(255,255,255,0.92)",
-            transition: "color 0.3s ease",
           }}
         >
           {type.label}
         </p>
+
         <p
           className="card-count text-sm mt-1"
           style={{
             color: "rgba(255,255,255,0.65)",
-            transition: "color 0.3s ease",
             letterSpacing: "0.05em",
           }}
         >
@@ -69,25 +82,51 @@ export default function PropertyTypes({ PROPERTY_TYPES }) {
   );
 
   return (
-    <section data-navy-bg style={{ background: "#1B304B", width: "100%" }}>
+    <section
+      data-navy-bg
+      style={{
+        background: "#1B304B",
+        width: "100%",
+      }}
+    >
       <style>{hoverStyle}</style>
 
-      {/* Mobile: stacked */}
+      {/* Mobile */}
       <div className="flex flex-col sm:hidden">
         {PROPERTY_TYPES.map((type, i) => (
           <div key={type.label}>
             <Card type={type} />
+
             {i < PROPERTY_TYPES.length - 1 && (
-              <div style={{ height: "1px", background: "rgba(255,255,255,0.35)", margin: "0 2rem" }} />
+              <div
+                style={{
+                  height: "1px",
+                  background: "rgba(255,255,255,0.35)",
+                  margin: "0 2rem",
+                }}
+              />
             )}
           </div>
         ))}
       </div>
 
-      {/* Desktop: all 5 in one row with dividers */}
-      <div className="hidden sm:flex items-center" style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      {/* Desktop */}
+      <div
+        className="hidden sm:flex items-center"
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
         {PROPERTY_TYPES.map((type, i) => (
-          <div key={type.label} style={{ display: "flex", alignItems: "center", flex: 1 }}>
+          <div
+            key={type.label}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flex: 1,
+            }}
+          >
             <Card type={type} />
             {i < PROPERTY_TYPES.length - 1 && <Divider />}
           </div>

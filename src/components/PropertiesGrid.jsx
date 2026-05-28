@@ -47,7 +47,7 @@ export default function PropertiesGrid({ properties }) {
             <div className="h-px w-11 bg-gold/40" />
           </div>
           <p className="mt-3 text-sm font-light text-muted max-w-sm mx-auto leading-relaxed">
-            Thousands of luxury home enthusiasts have found their dream home
+            Discover premium properties carefully selected to match your lifestyle and investment goals.
           </p>
         </div>
 

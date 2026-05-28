@@ -391,8 +391,7 @@ export default function ContactForm({ title, subtitle, buttonText }) {
               <div className="cf-left-top">
                 <h2>Find Your Dream Property</h2>
                 <p>
-                  Modern homes, luxury apartments and premium real estate
-                  solutions tailored for you.
+                  Discover premium homes, luxury villas, and investment opportunities tailored to your lifestyle and future goals.
                 </p>
 
                 <div className="cf-trust">
@@ -403,7 +402,7 @@ export default function ContactForm({ title, subtitle, buttonText }) {
                         <polyline points="9 22 9 12 15 12 15 22" />
                       </svg>
                     </div>
-                    <span>100+ premium listings</span>
+                    <span> 100+ Exclusive Property Listings</span>
                   </div>
 
                   <div className="cf-trust-item">
@@ -412,7 +411,7 @@ export default function ContactForm({ title, subtitle, buttonText }) {
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                       </svg>
                     </div>
-                    <span>Verified properties only</span>
+                    <span>Verified & Trusted Properties</span>
                   </div>
 
                   <div className="cf-trust-item">
@@ -422,7 +421,7 @@ export default function ContactForm({ title, subtitle, buttonText }) {
                         <polyline points="12 6 12 12 16 14" />
                       </svg>
                     </div>
-                    <span>24h response guarantee</span>
+                    <span>Dedicated Support & Quick Response</span>
                   </div>
                 </div>
               </div>

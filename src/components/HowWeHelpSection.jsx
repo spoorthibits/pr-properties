@@ -55,8 +55,8 @@ export const TagHouseIcon = () => (
 const IMG_FADE_MS = 400;
 
 export default function HowWeHelpSection({
-  heading = "Discover how we can help",
-  subheading = "Thousands of luxury home enthusiasts just like you visit our website.",
+  heading = "Expert support for your property journey",
+  subheading = "Trusted expertise and personalized solutions to simplify every step of your real estate journey.",
   tabs = [
     { key: "buying",  label: "Buying"  },
     { key: "selling", label: "Selling" },
@@ -66,55 +66,60 @@ export default function HowWeHelpSection({
     buying: [
       {
         id: "b1",
-        title: "Find out how much you can afford",
-        description: "Use our smart budget calculator to estimate your price range based on your income, savings, and liabilities. Understanding your true borrowing capacity early means you can search with confidence — no surprises, no wasted viewings.",
-        bullets: ["Income & expense analysis", "Borrowing capacity estimate", "Saved to your buyer profile"],
+        title: "Find the Perfect Property Within Your Budget",
+        description: "Understand your purchasing potential with expert insights and personalized financial guidance. We help you evaluate your budget, identify suitable opportunities, and move forward with confidence toward your ideal property investment.",
+        bullets: [" Personalized budget and affordability analysis  ", "Property recommendations aligned with your goals  ", "Expert guidance for smarter investment decisions "],
         icon: <SearchHouseIcon />,
-        learnMoreHref: "#",
+        learnMoreHref: "/about-us",
       },
       {
         id: "b2",
-        title: "Understand your monthly costs",
-        description: "Get a full breakdown of mortgage repayments, strata fees, council rates, and insurance before you commit. We surface every ongoing cost so you can budget accurately and know exactly what homeownership will cost each month.",
-        bullets: ["Mortgage repayment modelling", "Strata & council rate estimates", "Insurance cost guidance"],
+        title: "Maximize the Value of Your Property",
+        description: "Our strategic marketing approach, market expertise, and valuation insights help you attract the right buyers and achieve the best possible returns.",
+        bullets: ["Accurate property valuation ", "Targeted marketing strategies  ", "End-to-end selling support"],
         icon: <MoneyHouseIcon />,
-        learnMoreHref: "#",
+        learnMoreHref: "/about-us",
       },
       {
         id: "b3",
-        title: "Track property value trends",
-        description: "Follow suburb-level price movements and historical growth data across every market we operate in. Our intelligence tools help you time your purchase perfectly — buying in the right suburb at the right moment makes all the difference.",
-        bullets: ["Suburb growth heat maps", "12-month price movement charts", "Real-time demand signals"],
+        title: "Build Long-Term Wealth Through Real Estate",
+        description: "Explore high-potential investment opportunities with professional guidance designed to help you grow your portfolio and maximize returns.",
+        bullets: ["Market trend analysis ", "High-growth property opportunities", "Long-term investment planning "],
         icon: <GrowthHouseIcon />,
-        learnMoreHref: "#",
+        learnMoreHref: "/about-us",
       },
     ],
     selling: [
-      {
-        id: "s1",
-        title: "Get an instant property estimate",
-        description: "Receive a data-driven valuation of your home based on recent comparable sales, local demand, and current market conditions — all in seconds. Knowing your home's true value is the critical first step to a successful sale.",
-        bullets: ["Comparable sales analysis", "Local demand scoring", "Real-time market conditions"],
-        icon: <TagHouseIcon />,
-        learnMoreHref: "#",
-      },
-      {
-        id: "s2",
-        title: "Connect with top local agents",
-        description: "We match you with experienced agents in your area who have a proven track record of selling homes like yours at the best possible price. Our matching considers sale history, local expertise, and verified client satisfaction scores.",
-        bullets: ["Curated agent shortlist", "Sale history verification", "No obligation comparison"],
-        icon: <StarHouseIcon />,
-        learnMoreHref: "#",
-      },
-      {
-        id: "s3",
-        title: "Unlock your selling potential",
-        description: "Discover what upgrades, styling choices, and presentation strategies could meaningfully increase your final sale price. Our experts guide you through every step of the selling journey — from first impression to settlement.",
-        bullets: ["Pre-sale styling advice", "ROI-ranked improvement list", "End-to-end selling support"],
-        icon: <KeyHouseIcon />,
-        learnMoreHref: "#",
-      },
-    ],
+  {
+    id: "s1",
+    title: "Get the Best Value for Your Property",
+    description:
+      "Maximize your property’s potential with expert valuation insights, market analysis, and personalized strategies designed to attract qualified buyers and achieve competitive pricing.",
+    bullets: ["Accurate property valuation","Market demand analysis","Real-time pricing insights"],
+    icon: <TagHouseIcon />,
+    learnMoreHref: "/about-us",
+  },
+
+  {
+    id: "s2",
+    title: "Connect with Trusted Real Estate Experts",
+    description:
+      "Partner with experienced professionals who understand your local market and provide tailored guidance to help sell your property efficiently and confidently.",
+    bullets: ["Verified expert agents","Local market expertise","Personalized selling support"],
+    icon: <StarHouseIcon />,
+    learnMoreHref: "/about-us",
+  },
+
+  {
+    id: "s3",
+    title: "Unlock Your Property’s Full Potential",
+    description:
+      "Enhance your property’s appeal with strategic recommendations, professional presentation techniques, and end-to-end support to maximize your final sale value.",
+    bullets: ["Property presentation advice","Value improvement strategies","Complete selling assistance"],
+    icon: <KeyHouseIcon />,
+    learnMoreHref: "/about-us",
+  },
+],
   },
 }) {
   const [activeTab,   setActiveTab]   = useState(tabs[0].key);

@@ -15,7 +15,7 @@ const DEFAULT_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us" },
   { label: "Our Properties", href: "/companies" },
-  { label: "Our Services", href: "/services" },
+  { label: "Blogs", href: "/blogs" },
   { label: "Contact Us", href: "/contact" },
 ];
 
