@@ -4,7 +4,7 @@ import { useState } from "react";
 import ProjectListingCard from "@/components/ProjectListingCard";
 import Link from "next/link";
 
-export default function properties() {
+export default function PropertyPage({ showBanner = false }) {
     const [viewColumns, setViewColumns] = useState(3);
     const [sortOption, setSortOption] = useState("default");
     const [isSortOpen, setIsSortOpen] = useState(false);
@@ -101,15 +101,35 @@ export default function properties() {
     });
 
     return (
-        <div className="container-custom pt-28 pb-10">
-            {/* Breadcrumbs */}
+        <div className="bg-white min-h-screen font-['Montserrat',sans-serif]">
+            {showBanner && (
+                <section className="relative h-[80vh] min-h-[520px] w-full overflow-hidden flex items-center justify-center">
+                    <img
+                        src="/assets/properties_banner.jpg"
+                        alt="Our Properties Banner"
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-[#0F1D30]/65 z-10"></div>
 
+                    <div className="relative z-20 text-center px-4 max-w-3xl">
+                        <h1 className="text-white text-5xl md:text-6xl font-bold mb-4 font-['Playfair_Display',serif] tracking-wide">
+                            Our Properties
+                        </h1>
+                        <p className="text-white/90 text-lg md:text-xl font-medium tracking-wide">
+                            Explore our selection of premium real estate properties
+                        </p>
+                    </div>
+                </section>
+            )} 
 
-            {/* Header Section */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
-                <h1 className="text-3xl md:text-[40px] font-bold text-[#1B304B] font-['Playfair_Display',serif]">
-                    Property listing
-                </h1>
+            <div className={`container-custom pb-10 ${showBanner ? 'py-16' : 'pt-28'}`}>
+                {/* Header Section */}
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+                    {!showBanner && (
+                        <h1 className="text-3xl md:text-[40px] font-bold text-[#1B304B] font-['Playfair_Display',serif]">
+                            Property listing
+                        </h1>
+                    )}
 
                 {/* Controls */}
                 <div className="flex flex-wrap items-center gap-3">
@@ -182,5 +202,6 @@ export default function properties() {
                 ))}
             </div>
         </div>
+    </div>
     );
 }

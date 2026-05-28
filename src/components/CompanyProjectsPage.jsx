@@ -3,24 +3,10 @@ import { Building2, MapPin, Home, ArrowRight, Calendar, TrendingUp, Star, Phone,
 import Link from 'next/link';
 import ProjectListingCard from './ProjectListingCard';
 import PropertyPage from './PropertyPage';
+import { companies } from '@/data/companies';
 
-export default function CompanyProjectsPage() {
-  // This would come from API/database based on company ID
-  const company = {
-    id: 1,
-    name: "Skyline Developers",
-    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop",
-    coverImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&h=600&fit=crop",
-    description: "Skyline Developers has been at the forefront of luxury real estate development since 2010. We specialize in creating premium residential and commercial spaces that combine innovative design with sustainable practices.",
-    projects: 12,
-    properties: 450,
-    location: "New York, NY",
-    established: "2010",
-    rating: 4.8,
-    phone: "+1 (555) 123-4567",
-    email: "info@skylinedevelopers.com",
-    website: "www.skylinedevelopers.com"
-  };
+export default function CompanyProjectsPage({ companyId }) {
+  const company = companies.find(c => c.id === companyId) || companies[0];
 
   const projects = [
     {
