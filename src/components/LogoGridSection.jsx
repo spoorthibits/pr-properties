@@ -28,8 +28,7 @@ export default function ScrollingLogos({
     },
 
     {
-      question:
-        "Which documents should I verify before purchasing a property?",
+      question: "Which documents should I verify before purchasing a property?",
       answer:
         "Always review the title deed, legal approvals, tax receipts, occupancy certificates, and registration details to ensure transparency and avoid future legal complications.",
     },
@@ -49,8 +48,7 @@ export default function ScrollingLogos({
     },
 
     {
-      question:
-        "Why is location important when investing in real estate?",
+      question: "Why is location important when investing in real estate?",
       answer:
         "A prime location influences property value, future appreciation, connectivity, lifestyle convenience, and long-term investment returns.",
     },
@@ -71,10 +69,8 @@ export default function ScrollingLogos({
 
       {/* ── Dark Section ── */}
       <div className="relative bg-[#1B304B] pt-12 md:pt-20 pb-14 md:pb-20">
-        
         {/* Heading */}
         <div className="container-custom text-center">
-          
           <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold">
             {title}
           </h2>
@@ -84,22 +80,20 @@ export default function ScrollingLogos({
           </p>
 
           {/* ── Logo Row ── */}
-          <div className="mt-10 overflow-hidden">
-            
-            <div className="flex w-max animate-scroll-left gap-8 items-center">
-
+          {/* ───────── LOGOS ───────── */}
+          <div className="mt-12 overflow-hidden">
+            <div className="flex w-max animate-scroll-left gap-0 items-center">
               {loopLogos.map((logo, i) => (
                 <div
                   key={i}
-                  className="logo-card flex items-center justify-center rounded-3xl overflow-hidden"
+                  className="logo-card flex items-center justify-center rounded-[28px]"
                   style={{
                     width: "220px",
                     height: "110px",
-                    border: "1px solid rgba(255,255,255,0.10)",
                     background: "transparent",
                   }}
                 >
-                  <div className="relative w-[75%] h-[75%]">
+                  <div className="relative w-[78%] h-[78%]">
                     <Image
                       src={logo}
                       alt="partner logo"
@@ -109,7 +103,6 @@ export default function ScrollingLogos({
                   </div>
                 </div>
               ))}
-
             </div>
           </div>
         </div>
@@ -264,12 +257,7 @@ export default function ScrollingLogos({
         )}
 
         {/* Desktop Spacer */}
-        {cta && (
-          <div
-            className="hidden md:block"
-            style={{ height: "160px" }}
-          />
-        )}
+        {cta && <div className="hidden md:block" style={{ height: "160px" }} />}
       </div>
 
       {/* FAQ Spacer */}

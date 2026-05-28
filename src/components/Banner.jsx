@@ -65,7 +65,7 @@ export default function HeroBanner({
 
           {title && (
             <h1
-              className="text-white drop-shadow-lg transition-all duration-700 ease-out"
+              className="text-white drop-shadow-lg transition-all duration-400 ease-out"
               style={{
                 opacity: contentVisible ? 1 : 0,
                 transform: contentVisible
@@ -79,7 +79,7 @@ export default function HeroBanner({
 
           {subtitle && (
             <p
-              className="mt-3 text-white/85 max-w-xl transition-all duration-700 ease-out delay-150"
+              className="mt-3 text-white/85 max-w-xl transition-all duration-700 ease-out "
               style={{
                 opacity: contentVisible ? 1 : 0,
                 transform: contentVisible

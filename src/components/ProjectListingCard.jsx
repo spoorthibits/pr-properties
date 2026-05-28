@@ -2,16 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 
 const ProjectListingCard = ({ project, companyId, layout = 'grid' }) => {
-  const getStatusColor = (status) => {
-    switch(status) {
-      case 'Available': return 'bg-green-100 text-green-700';
-      case 'Under Construction': return 'bg-yellow-100 text-yellow-700';
-      case 'Pre-Launch': return 'bg-blue-100 text-blue-700';
-      case 'Completed': return 'bg-gray-100 text-gray-700';
-      default: return 'bg-gray-100 text-gray-700';
-    }
-  };
-
   return (
     <div className={`bg-white rounded-[10px] shadow-md overflow-hidden group font-['Montserrat',sans-serif] flex ${layout === 'list' ? 'flex-col sm:flex-row w-full' : 'flex-col w-full'} hover:shadow-2xl transition-all duration-300`}>
       {/* Image Container */}
@@ -22,15 +12,6 @@ const ProjectListingCard = ({ project, companyId, layout = 'grid' }) => {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
-        {/* Badges */}
-        <div className="absolute top-4 left-4 flex gap-2 z-10">
-          <span className={`px-3 py-1.5 rounded-full text-xs font-semibold ${getStatusColor(project.status)}`}>
-            {project.status}
-          </span>
-          <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white" style={{ color: 'var(--color-primary)' }}>
-            {project.type}
-          </span>
-        </div>
 
         {/* Top to Bottom Sliding Overlay */}
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center gap-4 transition-transform duration-300 ease-in-out -translate-y-full group-hover:translate-y-0 z-0">
@@ -57,7 +38,7 @@ const ProjectListingCard = ({ project, companyId, layout = 'grid' }) => {
         </h3>
 
         <div className="flex items-center text-gray-500 text-[15px] mb-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 shrink-0" style={{ color: 'var(--color-gold)' }}>
             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
             <circle cx="12" cy="10" r="3" />
           </svg>
@@ -68,43 +49,23 @@ const ProjectListingCard = ({ project, companyId, layout = 'grid' }) => {
           {project.description}
         </p>
 
-        <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-200">
+        <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
           <div>
             <div className="text-sm font-medium mb-1" style={{ color: 'var(--color-muted)' }}>Properties</div>
-            <div className="font-bold" style={{ color: 'var(--color-primary)' }}>{project.properties} Units</div>
-          </div>
-          <div>
-            <div className="text-sm font-medium mb-1" style={{ color: 'var(--color-muted)' }}>Price Range</div>
-            <div className="font-bold" style={{ color: 'var(--color-primary)' }}>{project.priceRange}</div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Completion</div>
-            <div className="text-sm font-semibold">{project.completionDate}</div>
+            <div className="font-bold text-lg" style={{ color: 'var(--color-primary)' }}>{project.properties} Units</div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <button className="hidden sm:flex items-center text-gray-600 hover:text-gray-900 transition-colors text-[15px]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1.5">
-                <path d="m16 3 4 4-4 4" />
-                <path d="M20 7H4" />
-                <path d="m8 21-4-4 4-4" />
-                <path d="M4 17h16" />
+          {/* Left to Right Sliding Button */}
+          <Link href="/contact" className="relative overflow-hidden group/btn border border-primary rounded-md px-5 py-2 transition-colors block text-center">
+            <div className="absolute inset-0 bg-primary translate-x-[-101%] group-hover/btn:translate-x-0 transition-transform duration-300 ease-in-out z-0"></div>
+            <span className="relative z-10 text-primary group-hover/btn:text-white font-medium transition-colors duration-300 flex items-center justify-center gap-1.5">
+             Contact Us
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover/btn:translate-x-1">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
               </svg>
-              Compare
-            </button>
-
-            {/* Left to Right Sliding Button */}
-            <Link href={`/properties/${project.id}`} className="relative overflow-hidden group/btn border border-primary rounded-md px-5 py-2 transition-colors block text-center">
-              <div className="absolute inset-0 bg-primary translate-x-[-101%] group-hover/btn:translate-x-0 transition-transform duration-300 ease-in-out z-0"></div>
-              <span className="relative z-10 text-primary group-hover/btn:text-white font-medium transition-colors duration-300">
-                Details
-              </span>
-            </Link>
-          </div>
+            </span>
+          </Link>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProjectListingCard from "@/components/ProjectListingCard";
 import Link from "next/link";
 
-export default function properties() {
+export default function PropertyPage({ showBanner = false }) {
     const [viewColumns, setViewColumns] = useState(3);
     const [sortOption, setSortOption] = useState("default");
     const [isSortOpen, setIsSortOpen] = useState(false);
@@ -87,7 +87,10 @@ export default function properties() {
 
     return (
         <div className="container-custom pt-28 pb-10">
+            {/* Breadcrumbs */}
 
+
+            {/* Header Section */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
                 <h1 className="text-3xl md:text-[40px] font-bold text-[#1B304B] font-['Playfair_Display',serif]">
                     Property listing
@@ -135,7 +138,6 @@ export default function properties() {
                     />
                 ))}
             </div>
-
         </div>
     );
 }

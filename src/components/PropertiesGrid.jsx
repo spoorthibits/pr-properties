@@ -40,7 +40,7 @@ export default function PropertiesGrid({ properties }) {
         {/* Heading */}
         <div className="text-center mb-12">
           <p className="text-[11px] tracking-[0.22em] uppercase text-gold mb-2.5">Our Portfolio</p>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary">Featured Properties</h2>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary tracking-wide">Featured Properties</h2>
           <div className="flex items-center justify-center gap-3 mt-4">
             <div className="h-px w-11 bg-gold/40" />
             <div className="w-1.5 h-1.5 rounded-full bg-gold" />

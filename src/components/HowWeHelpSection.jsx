@@ -617,7 +617,7 @@ export default function HowWeHelpSection({
                       style={{ height: `${cardH}px` }}
                       onClick={() => handleCardClick(i)}
                     >
-                      <span className="hwh-step-num">0{i + 1}</span>
+                      
 
                       <div className="hwh-step-badge">
                         <div className="hwh-icon-box">{card.icon}</div>
