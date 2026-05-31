@@ -10,7 +10,20 @@ export default function CompaniesPage() {
   const displayedCompanies = companies.slice(0, visibleCount);
 
   return (
-    <div className="bg-white min-h-screen">
+    <div 
+      className="min-h-screen"
+      style={{
+        backgroundColor: '#0d1b2a',
+        backgroundImage: `
+          linear-gradient(rgba(200,165,80,0.25) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(200,165,80,0.25) 1px, transparent 1px),
+          linear-gradient(rgba(200,165,80,0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(200,165,80,0.08) 1px, transparent 1px)
+        `,
+        backgroundSize: '100px 100px, 100px 100px, 20px 20px, 20px 20px',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       
       {/* HERO BANNER */}
       <section className="relative h-[80vh] min-h-[520px] w-full overflow-hidden flex items-center justify-center font-['Montserrat',sans-serif]">
@@ -33,14 +46,14 @@ export default function CompaniesPage() {
             <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md rounded-lg shadow-sm border border-white/10 text-white">
               <Building2 className="w-6 h-6 text-[#f09343]" />
               <div className="text-left">
-                <div className="text-2xl font-bold font-['Playfair_Display',serif] text-white">50+</div>
+                <div className="text-2xl font-bold font-['Playfair_Display',serif] text-white">20</div>
                 <div className="text-xs text-white/70">Companies</div>
               </div>
             </div>
             <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md rounded-lg shadow-sm border border-white/10 text-white">
               <Home className="w-6 h-6 text-[#f09343]" />
               <div className="text-left">
-                <div className="text-2xl font-bold font-['Playfair_Display',serif] text-white">2,500+</div>
+                <div className="text-2xl font-bold font-['Playfair_Display',serif] text-white">35+</div>
                 <div className="text-xs text-white/70">Properties</div>
               </div>
             </div>
@@ -53,8 +66,8 @@ export default function CompaniesPage() {
         <div className="container-custom">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="mb-2">Featured Companies</h2>
-              <p style={{ color: 'var(--color-muted)' }}>Top-rated developers with exceptional track records</p>
+              <h2 className="mb-2 text-white">Featured Companies</h2>
+              <p className="text-white/70">Top-rated developers with exceptional track records</p>
             </div>
           </div>
 
@@ -110,15 +123,10 @@ export default function CompaniesPage() {
                         <span className="line-clamp-1">{company.location}</span>
                       </div>
                     </div>
-
                     <div>
                       {/* Stats Grid */}
-                      <div className="grid grid-cols-3 gap-2 text-center bg-offwhite/50 p-3 rounded-xl mb-4 border border-gray-50/50">
-                        <div>
-                          <div className="text-sm font-bold text-primary">{company.projects}</div>
-                          <div className="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">Projects</div>
-                        </div>
-                        <div className="border-x border-gray-100">
+                      <div className="grid grid-cols-2 gap-2 text-center bg-offwhite/50 p-3 rounded-xl mb-4 border border-gray-50/50">
+                        <div className="border-r border-gray-100">
                           <div className="text-sm font-bold text-primary">{company.properties}</div>
                           <div className="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">Properties</div>
                         </div>

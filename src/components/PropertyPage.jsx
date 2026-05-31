@@ -5,7 +5,7 @@ import Link from "next/link";
 import { properties } from "@/data/properties";
 import { companies } from "@/data/companies";
 
-export default function PropertyPage({ showBanner = false, companyId }) {
+export default function PropertyPage({ showBanner = false, companyId, isCompanyPage = false }) {
     const [viewColumns, setViewColumns] = useState(3);
     const [sortOption, setSortOption] = useState("default");
     const [isSortOpen, setIsSortOpen] = useState(false);
@@ -68,8 +68,22 @@ export default function PropertyPage({ showBanner = false, companyId }) {
     });
 
     return (
-        <div className="bg-white min-h-screen font-['Montserrat',sans-serif]">
-            <div className={`container-custom pb-10 ${showBanner ? 'py-16' : 'pt-28'}`}>
+        <div 
+            className="min-h-screen font-['Montserrat',sans-serif]"
+            style={isCompanyPage ? {
+                backgroundColor: '#f5f0e8',
+                backgroundImage: `
+                    linear-gradient(rgba(180,155,90,0.18) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(180,155,90,0.18) 1px, transparent 1px),
+                    linear-gradient(rgba(180,155,90,0.07) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(180,155,90,0.07) 1px, transparent 1px)
+                `,
+                backgroundSize: '80px 80px, 80px 80px, 20px 20px, 20px 20px'
+            } : {
+                backgroundColor: '#ffffff'
+            }}
+        >
+            <div className={`container-custom pb-10 ${isCompanyPage ? 'py-16' : (showBanner ? 'py-16' : 'pt-28')}`}>
                 {/* Header Section */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 border-b border-gray-100 pb-4">
                     {!showBanner && (
@@ -79,7 +93,7 @@ export default function PropertyPage({ showBanner = false, companyId }) {
                     )}
 
                     {/* Controls */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
                         {/* View Toggles */}
                         <div className="flex items-center gap-2">
                             <button
