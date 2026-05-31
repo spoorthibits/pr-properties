@@ -72,16 +72,33 @@ export default function PropertyCard({
 
         {/* Stats */}
         <p className="text-small" style={{ color: "var(--color-muted)" }}>
-          <span className="font-semibold" style={{ color: "var(--color-primary)" }}>{beds}</span> Beds&nbsp;&nbsp;
-          <span className="font-semibold" style={{ color: "var(--color-primary)" }}>{baths}</span> Baths&nbsp;&nbsp;
-          <span className="font-semibold" style={{ color: "var(--color-primary)" }}>{sqft.toLocaleString()}</span> Sqft
+          {beds > 0 && (
+            <span className="mr-3">
+              <span className="font-semibold" style={{ color: "var(--color-primary)" }}>{beds}</span> Beds
+            </span>
+          )}
+          {baths > 0 && (
+            <span className="mr-3">
+              <span className="font-semibold" style={{ color: "var(--color-primary)" }}>{baths}</span> Baths
+            </span>
+          )}
+          {sqft > 0 && (
+            <span>
+              <span className="font-semibold" style={{ color: "var(--color-primary)" }}>{sqft.toLocaleString()}</span> Sqft
+            </span>
+          )}
+          {!beds && !baths && (
+            <span className="font-semibold" style={{ color: "var(--color-primary)" }}>Open Plot Layout</span>
+          )}
         </p>
 
         <hr className="border-gray-100" />
 
         {/* Price + Actions */}
         <div className="flex items-center justify-between mt-auto">
-          
+          <div className="text-lg font-bold text-primary">
+            {typeof price === 'number' ? `₹${price.toLocaleString()}` : price}
+          </div>
 
           <div className="flex items-center gap-3">
             <button

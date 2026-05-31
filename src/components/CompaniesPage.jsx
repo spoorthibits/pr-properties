@@ -1,9 +1,14 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import { Building2, MapPin, Home, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { companies } from '@/data/companies';
 
 export default function CompaniesPage() {
+  const [visibleCount, setVisibleCount] = useState(6);
+  const displayedCompanies = companies.slice(0, visibleCount);
+
   return (
     <div className="bg-white min-h-screen">
       
@@ -54,111 +59,126 @@ export default function CompaniesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {companies.filter(c => c.featured).map((company) => (
-              <Link 
-                key={company.id} 
-                href={`/companies/${company.id}`}
-                className="card group cursor-pointer transition-all duration-300 hover:shadow-2xl"
+            {displayedCompanies.map((company) => {
+              const isUpcoming = company.upcoming;
+              const CardContent = (
+                <>
+                  {/* Image Container with Cover Photo */}
+                  <div className="relative h-44 overflow-hidden w-full bg-gray-100 shrink-0">
+                    <img 
+                      src={company.coverImage || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=450&fit=crop"} 
+                      alt={`${company.name} cover`}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    {/* Subtle dark gradient overlay on image */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    {/* Upcoming Label / Badge */}
+                    {isUpcoming && (
+                      <div 
+                        className="absolute top-3 right-3 text-white font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-md z-20"
+                        style={{ backgroundColor: 'var(--color-gold)' }}
+                      >
+                        Upcoming
+                      </div>
+                    )}
+
+                    {/* Logo overlayed at the bottom left */}
+                    <div className="absolute bottom-3 left-4 bg-white  rounded-xl shadow-md border border-gray-100 w-16 h-16 flex items-center justify-center overflow-hidden z-10 transition-transform duration-500 group-hover:scale-105">
+                      <img 
+                        src={company.logo} 
+                        alt={company.name}
+                        className="w-full h-full object-contain rounded-lg"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="p-6 pt-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Company Name */}
+                      <h3 className="text-lg font-bold text-primary font-['Playfair_Display',serif] mb-2 group-hover:text-gold transition-colors duration-300 line-clamp-1">
+                        {company.name}
+                      </h3>
+                      {/* Description */}
+                      <p className="text-xs mb-4 line-clamp-2 leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+                        {company.description}
+                      </p>
+                      
+                      {/* Location */}
+                      <div className="flex items-center gap-1.5 mb-4 text-xs font-semibold" style={{ color: 'var(--color-muted)' }}>
+                        <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
+                        <span className="line-clamp-1">{company.location}</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      {/* Stats Grid */}
+                      <div className="grid grid-cols-3 gap-2 text-center bg-offwhite/50 p-3 rounded-xl mb-4 border border-gray-50/50">
+                        <div>
+                          <div className="text-sm font-bold text-primary">{company.projects}</div>
+                          <div className="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">Projects</div>
+                        </div>
+                        <div className="border-x border-gray-100">
+                          <div className="text-sm font-bold text-primary">{company.properties}</div>
+                          <div className="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">Properties</div>
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-primary">{company.established}</div>
+                          <div className="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">Est.</div>
+                        </div>
+                      </div>
+
+                      {/* View Projects Link */}
+                      <div className="flex items-center justify-between pt-2 border-t border-gray-50">
+                        <span className="text-xs font-bold uppercase tracking-wider text-gold group-hover:text-primary transition-colors duration-300">
+                          {isUpcoming ? "Coming Soon" : "View Projects"}
+                        </span>
+                        {!isUpcoming && (
+                          <div className="w-7 h-7 rounded-full bg-offwhite group-hover:bg-gold flex items-center justify-center transition-colors duration-300">
+                            <ArrowRight className="w-4 h-4 text-gold group-hover:text-white transition-transform group-hover:translate-x-0.5" />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+
+              if (isUpcoming) {
+                return (
+                  <div 
+                    key={company.id} 
+                    className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 flex flex-col h-full relative cursor-default"
+                  >
+                    {CardContent}
+                  </div>
+                );
+              }
+
+              return (
+                <Link 
+                  key={company.id} 
+                  href={`/companies/${company.id}`}
+                  className="group cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gold/30 hover:shadow-2xl transition-all duration-500 flex flex-col h-full relative"
+                >
+                  {CardContent}
+                </Link>
+              );
+            })}
+          </div>
+
+          {visibleCount < companies.length && (
+            <div className="flex justify-center -mt-8 mb-16">
+              <button 
+                onClick={() => setVisibleCount((prev) => prev + 6)}
+                className="btn-secondary flex items-center gap-2 cursor-pointer transition-all duration-300 hover:scale-105"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={company.logo} 
-                    alt={company.name}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                    <span>⭐</span>
-                    <span>{company.rating}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3 group-hover:text-gold transition-colors">{company.name}</h3>
-                  <p className="text-sm mb-4 line-clamp-2">{company.description}</p>
-                  
-                  <div className="flex items-center gap-2 mb-4 text-sm" style={{ color: 'var(--color-muted)' }}>
-                    <MapPin className="w-4 h-4" />
-                    <span>{company.location}</span>
-                  </div>
+                <span>More</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
 
-                  <div className="grid grid-cols-3 gap-4 mb-4 pb-4 border-b border-gray-200">
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.projects}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Projects</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.properties}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Properties</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.established}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Est.</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium" style={{ color: 'var(--color-gold)' }}>View Projects</span>
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" style={{ color: 'var(--color-gold)' }} />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* All Companies */}
-          <div className="mb-8">
-            <h2 className="mb-6">All Companies</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {companies.filter(c => !c.featured).map((company) => (
-              <Link 
-                key={company.id} 
-                href={`/companies/${company.id}`}
-                className="card group cursor-pointer transition-all duration-300 hover:shadow-2xl"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={company.logo} 
-                    alt={company.name}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                    <span>⭐</span>
-                    <span>{company.rating}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3 group-hover:text-gold transition-colors">{company.name}</h3>
-                  <p className="text-sm mb-4 line-clamp-2">{company.description}</p>
-                  
-                  <div className="flex items-center gap-2 mb-4 text-sm" style={{ color: 'var(--color-muted)' }}>
-                    <MapPin className="w-4 h-4" />
-                    <span>{company.location}</span>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-4 mb-4 pb-4 border-b border-gray-200">
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.projects}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Projects</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.properties}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Properties</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{company.established}</div>
-                      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>Est.</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium" style={{ color: 'var(--color-gold)' }}>View Projects</span>
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" style={{ color: 'var(--color-gold)' }} />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
     </div>
