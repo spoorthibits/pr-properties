@@ -80,7 +80,7 @@ export default function PropertyPage({ showBanner = false, companyId }) {
 
                     {/* Controls */}
                     <div className="flex items-center gap-3">
-                        {/* View Toggles */}
+                        {/* View Togg les */}
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={() => setViewColumns(3)}
