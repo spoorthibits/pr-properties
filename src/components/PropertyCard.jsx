@@ -106,8 +106,8 @@ export default function PropertyCard({
               className="flex items-center gap-1.5 text-small transition-colors"
               style={{ color: "var(--color-muted)" }}
             >
-              <CompareIcon />
-              Compare
+              {/* <CompareIcon />
+              Compare */}
             </button>
             <Link
               href={detailsHref}
