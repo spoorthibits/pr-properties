@@ -98,7 +98,7 @@ export default function Footer({ showWave = true, waveBg }) {
                 </div>
                 <div>
                   <p className="text-xs text-white/50">Call us</p>
-                  <p className="font-semibold text-white text-sm">(603) 555-0123</p>
+                  <p className="font-semibold text-white text-sm">9000407673</p>
                 </div>
               </a>
 
@@ -194,7 +194,7 @@ export default function Footer({ showWave = true, waveBg }) {
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
-                  <p className="text-sm text-white/50">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                  <p className="text-sm text-white/50">Mon - Sat: 9:00 AM - 5:00 PM</p>
                 </li>
               </ul>
             </div>
@@ -203,7 +203,7 @@ export default function Footer({ showWave = true, waveBg }) {
         </div>
 
         <div className="bg-[var(--color-gold)] text-white text-center py-4 text-sm">
-          Copyright 2026, All Rights Reserved - PR Dream Properties
+          Copyright © 2026, All Rights Reserved - PR Dream Properties
         </div>
       </div>
     </footer>

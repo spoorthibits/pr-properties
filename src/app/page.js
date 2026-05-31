@@ -182,20 +182,27 @@ export default function Home() {
   // ── ScrollingLogos data ─────────────────────────────────────────────────
   // Replace srcs with your actual partner/brand logo image paths
   const LOGOS = [
-    "/assets/logos/logo1.png",
-    "/assets/logos/logo2.png",
-    "/assets/logos/logo3.png",
-    "/assets/logos/logo4.png",
-    "/assets/logos/logo5.png",
-    "/assets/logos/logo6.png",
+   
+  "/assets/NSPCompany.png",
+  "/assets/SVSVPDSCompany.png",
+  "/assets/AXIACompany.png",
+  "/assets/NRICompany.png",
+  "/assets/NEEMSBOROCompany.jpg",
+  "/assets/CharanCompany.jpg",
+  "/assets/IndoCompany.png",
+  "/assets/VJRCompany.jpg",
+  "/assets/SURAKSHAACompany.jpg",
+  "/assets/MSQUARECompany.jpg",
+  "/assets/NINECompany.png"
+
   ];
 
   const SCROLLING_CTA = {
-    heading: "Are You Selling Or Renting Your Property?",
+    heading: "Ready to Sell or Rent Your Property?",
     subheading:
-      "Thousands of luxury home enthusiasts just like you visit our website. List with us and get matched to the right buyers instantly.",
-    buttonLabel: "Request your free appraisal",
-    buttonHref: "/appraisal",
+      "Connect with qualified buyers and tenants through our trusted real estate network. Get expert guidance, maximum visibility, and the best value for your property.",
+    buttonLabel: "Start Your Journey",
+    buttonHref: "/contact",
     image: "/assets/agent_img-removebg-preview.png",
   };
 
@@ -208,7 +215,7 @@ export default function Home() {
       <HowWeHelpSection slides={HOW_WE_HELP_SLIDES} />
       <ScrollingLogos
         title="Let's Work Together"
-        subtitle="Thousands of luxury home enthusiasts just like you visit our website."
+        subtitle="Building trusted partnerships to deliver exceptional real estate solutions and create lasting value."
         logos={LOGOS}
         cta={SCROLLING_CTA}
       />

@@ -40,14 +40,14 @@ export default function PropertiesGrid({ properties }) {
         {/* Heading */}
         <div className="text-center mb-12">
           <p className="text-[11px] tracking-[0.22em] uppercase text-gold mb-2.5">Our Portfolio</p>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary">Featured Properties</h2>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary tracking-wide">Featured Properties</h2>
           <div className="flex items-center justify-center gap-3 mt-4">
             <div className="h-px w-11 bg-gold/40" />
             <div className="w-1.5 h-1.5 rounded-full bg-gold" />
             <div className="h-px w-11 bg-gold/40" />
           </div>
           <p className="mt-3 text-sm font-light text-muted max-w-sm mx-auto leading-relaxed">
-            Thousands of luxury home enthusiasts have found their dream home
+            Discover premium properties carefully selected to match your lifestyle and investment goals.
           </p>
         </div>
 
