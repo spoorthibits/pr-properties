@@ -16,7 +16,6 @@ export default function FAQSection({ faqData = [] }) {
     >
       <div className="container-custom">
         <div className="grid md:grid-cols-3 gap-12 items-center">
-
           {/* ── Left heading block ── */}
           <div className="flex justify-center md:justify-start">
             <div
@@ -37,7 +36,7 @@ export default function FAQSection({ faqData = [] }) {
             {faqData.map((item, index) => {
               const isActive = index === activeIndex;
               const contentHeight = isActive
-                ? (answerRefs.current[index]?.scrollHeight ?? 0) + "px"
+                ? (answerRefs.current[index]?.scrollHeight || 200) + "px"
                 : "0px";
 
               return (
@@ -47,19 +46,20 @@ export default function FAQSection({ faqData = [] }) {
                 >
                   {/* Question button */}
                   <button
-                    onClick={() => setActiveIndex(isActive ? null : index)}
+                    onClick={() => setActiveIndex(index)}
                     className="w-full flex justify-between items-center gap-4 px-6 md:px-8 py-5 text-left transition-colors duration-300"
                     style={{
                       backgroundColor: isActive
-                        ? "var(--color-primary)"   /* #1B304B navy when active */
+                        ? "var(--color-primary)" /* #1B304B navy when active */
                         : "transparent",
                       color: isActive
                         ? "#ffffff"
-                        : "var(--color-text)",     /* #1f2937 default */
+                        : "var(--color-text)" /* #1f2937 default */,
                     }}
                     onMouseEnter={(e) => {
                       if (!isActive) {
-                        e.currentTarget.style.backgroundColor = "var(--color-primary)";
+                        e.currentTarget.style.backgroundColor =
+                          "var(--color-primary)";
                         e.currentTarget.style.color = "#ffffff";
                       }
                     }}
@@ -83,7 +83,9 @@ export default function FAQSection({ faqData = [] }) {
                         stroke="currentColor"
                         className="w-5 h-5 transition-transform duration-300"
                         style={{
-                          transform: isActive ? "rotate(180deg)" : "rotate(0deg)",
+                          transform: isActive
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
                         }}
                       >
                         <path
@@ -109,7 +111,7 @@ export default function FAQSection({ faqData = [] }) {
                     <div
                       className="px-6 md:px-8 py-5 text-[14px] md:text-[16px] leading-relaxed"
                       style={{
-                        color: "var(--color-muted)",      /* #6b7280 */
+                        color: "var(--color-muted)" /* #6b7280 */,
                         borderTop: "1px solid #f0f0f0",
                         backgroundColor: "#ffffff",
                       }}
@@ -121,7 +123,6 @@ export default function FAQSection({ faqData = [] }) {
               );
             })}
           </div>
-
         </div>
       </div>
     </section>

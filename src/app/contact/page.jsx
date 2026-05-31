@@ -41,17 +41,17 @@ export default function Contact() {
 
                     <p className="text-[16px]">
                       <span className="font-medium text-[var(--color-primary)]">
-                        Week Days :
+                        Monday – Sunday:
                       </span>{" "}
                       9:00 AM – 5:00 PM
                     </p>
 
-                    <p className="text-[16px]">
+                    {/* <p className="text-[16px]">
                       <span className="font-medium text-[var(--color-primary)]">
                         Sunday :
                       </span>{" "}
                       Holiday
-                    </p>
+                    </p> */}
 
                   </div>
 

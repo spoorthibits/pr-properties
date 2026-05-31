@@ -194,7 +194,7 @@ export default function Footer({ showWave = true, waveBg }) {
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
-                  <p className="text-sm text-white/50">Mon - Sat: 9:00 AM - 5:00 PM</p>
+                  <p className="text-sm text-white/50">Timings: 9:00 AM - 5:00 PM</p>
                 </li>
               </ul>
             </div>
