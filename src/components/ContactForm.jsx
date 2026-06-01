@@ -383,7 +383,7 @@ export default function ContactForm({ title, subtitle, buttonText }) {
         .section         → py-16 md:py-24  (global CSS)
         .container-custom → w-full mx-auto px-4 with responsive max-widths (global CSS)
       */}
-      <section className="section">
+      <section className="section pt-6 pb-16 md:pt-2 md:pb-10">
         <div className="container-custom">
           <div className="cf-card">
             {/* ── LEFT PANEL ── */}

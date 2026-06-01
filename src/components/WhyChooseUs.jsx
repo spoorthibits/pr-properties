@@ -57,13 +57,13 @@ const cards = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="why-section section">
+    <section className="why-section section py-12">
       <div className="container-custom">
         <div className="why-grid">
 
           {/* ── LEFT: TEXT ── */}
           <div className="why-text">
-            <p className="why-eyebrow">WHY CHOOSE US</p>
+            {/* <p className="why-eyebrow">WHY CHOOSE US</p> */}
             <h2>Why Choose Dream Properties</h2>
             <p className="mt-5">
               We combine local market knowledge with a customer-first approach to
