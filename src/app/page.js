@@ -12,7 +12,7 @@ export default function Home() {
   const properties = [
     {
       label: "Open Plots",
-      count: "234 Property",
+     
       icon: (
         <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-16">
           <rect x="18" y="22" width="36" height="46" rx="1" stroke="currentColor" strokeWidth="2.2" />
@@ -28,7 +28,7 @@ export default function Home() {
     },
     {
       label: "Apartments",
-      count: "234 Property",
+      
       icon: (
         <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-16">
           <path d="M10 44 L30 24 L50 44" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
@@ -41,7 +41,7 @@ export default function Home() {
     },
     {
       label: "Villas",
-      count: "234 Property",
+      
       icon: (
         <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-16">
           <rect x="26" y="12" width="28" height="56" rx="1" stroke="currentColor" strokeWidth="2.2" />
@@ -62,7 +62,7 @@ export default function Home() {
     },
     {
       label: "Red Sandelwood Farmlands",
-      count: "234 Property",
+      
       icon: (
         <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-16">
           <rect x="8" y="28" width="64" height="40" rx="1" stroke="currentColor" strokeWidth="2.2" />
@@ -81,7 +81,7 @@ export default function Home() {
     },
     {
       label: "Commercial",
-      count: "234 Property",
+      
       icon: (
         <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-16">
           <rect x="10" y="18" width="60" height="50" rx="1" stroke="currentColor" strokeWidth="2.2" />
@@ -130,17 +130,17 @@ export default function Home() {
     },
     {
       id: 3,
-      image: { src: "/assets/nsp-1.jpg", alt: "Sai Gardenia" },
+      image: { src: "/assets/nsp-1.jpg", alt: "Red Sandalwood Farmland" },
       badges: [
         { label: "Featured", variant: "featured" },
         { label: "Gated Plots", variant: "status" },
       ],
-      title: "Sai Gardenia (Navya Sai Projects)",
-      address: "Machilipatnam Bypass Road, Andhra Pradesh",
+      title: "Red Sandalwood Farmland",
+      address: "Machilipatnam, Andhra Pradesh",
       beds: 0,
       baths: 0,
       sqft: 0,
-      price: "₹12,000 / sq yd",
+      price: "₹4,499 / sq yd",
       detailsHref: "/companies/2",
     },
   ];
@@ -183,7 +183,6 @@ export default function Home() {
   // Replace srcs with your actual partner/brand logo image paths
   const LOGOS = [
    
-  "/assets/NSPCompany.png",
   "/assets/SVSVPDSCompany.png",
   "/assets/AXIACompany.png",
   "/assets/NRICompany.png",
