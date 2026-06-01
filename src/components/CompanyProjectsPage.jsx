@@ -5,6 +5,7 @@ import ProjectListingCard from './ProjectListingCard';
 import PropertyPage from './PropertyPage';
 import { companies } from '@/data/companies';
 import { properties } from '@/data/properties';
+import Footer from './Footer';
 
 export default function CompanyProjectsPage({ companyId }) {
   const company = companies.find(c => c.id === companyId) || companies[0];
@@ -196,6 +197,7 @@ export default function CompanyProjectsPage({ companyId }) {
 
       {/* Property Listing */}
       <PropertyPage companyId={company.id} isCompanyPage={true} />
+      <Footer/>
     </div>
   );
 }

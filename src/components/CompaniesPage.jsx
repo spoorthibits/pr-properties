@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Building2, MapPin, Home, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { companies } from '@/data/companies';
+import Footer from './Footer';
 
 export default function CompaniesPage() {
   const [visibleCount, setVisibleCount] = useState(6);
@@ -13,17 +14,43 @@ export default function CompaniesPage() {
     <div 
       className="min-h-screen"
       style={{
-        backgroundColor: '#0d1b2a',
-        backgroundImage: `
-          linear-gradient(rgba(200,165,80,0.25) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(200,165,80,0.25) 1px, transparent 1px),
-          linear-gradient(rgba(200,165,80,0.08) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(200,165,80,0.08) 1px, transparent 1px)
-        `,
-        backgroundSize: '100px 100px, 100px 100px, 20px 20px, 20px 20px',
+        backgroundColor: '#faf6f4',
+        backgroundImage: 'radial-gradient(circle, #d4b8ac 1.5px, transparent 1.5px)',
+        backgroundSize: '36px 36px',
         backgroundAttachment: 'fixed'
       }}
     >
+      <style>{`
+        .company-card {
+          background-color: #ffffff;
+          border: 1px solid rgba(200, 160, 140, 0.15);
+          border-radius: 12px;
+        }
+        .company-card:hover {
+          border-color: rgba(200, 160, 140, 0.35);
+        }
+        .view-projects-link {
+          color: #b87a60 !important;
+        }
+        .group:hover .view-projects-link,
+        .view-projects-link:hover {
+          color: #a06548 !important;
+        }
+        .view-projects-arrow-wrapper {
+          background-color: var(--color-offwhite);
+          transition: background-color 0.3s ease;
+        }
+        .group:hover .view-projects-arrow-wrapper {
+          background-color: #b87a60 !important;
+        }
+        .view-projects-arrow {
+          color: #b87a60 !important;
+          transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .group:hover .view-projects-arrow {
+          color: #ffffff !important;
+        }
+      `}</style>
       
       {/* HERO BANNER */}
       <section className="relative h-[80vh] min-h-[520px] w-full overflow-hidden flex items-center justify-center font-['Montserrat',sans-serif]">
@@ -66,8 +93,8 @@ export default function CompaniesPage() {
         <div className="container-custom">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="mb-2 text-white">Featured Companies</h2>
-              <p className="text-white/70">Top-rated developers with exceptional track records</p>
+              <h2 className="mb-2 text-[#1B304B]">Featured Companies</h2>
+              <p className="text-gray-600">Top-rated developers with exceptional track records</p>
             </div>
           </div>
 
@@ -138,12 +165,12 @@ export default function CompaniesPage() {
 
                       {/* View Projects Link */}
                       <div className="flex items-center justify-between pt-2 border-t border-gray-50">
-                        <span className="text-xs font-bold uppercase tracking-wider text-gold group-hover:text-primary transition-colors duration-300">
+                        <span className="text-xs font-bold uppercase tracking-wider view-projects-link transition-colors duration-300">
                           {isUpcoming ? "Coming Soon" : "View Projects"}
                         </span>
                         {!isUpcoming && (
-                          <div className="w-7 h-7 rounded-full bg-offwhite group-hover:bg-gold flex items-center justify-center transition-colors duration-300">
-                            <ArrowRight className="w-4 h-4 text-gold group-hover:text-white transition-transform group-hover:translate-x-0.5" />
+                          <div className="w-7 h-7 rounded-full view-projects-arrow-wrapper flex items-center justify-center transition-colors duration-300">
+                            <ArrowRight className="w-4 h-4 view-projects-arrow transition-transform group-hover:translate-x-0.5" />
                           </div>
                         )}
                       </div>
@@ -156,7 +183,7 @@ export default function CompaniesPage() {
                 return (
                   <div 
                     key={company.id} 
-                    className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 flex flex-col h-full relative cursor-default"
+                    className="company-card overflow-hidden shadow-sm transition-all duration-500 flex flex-col h-full relative cursor-default"
                   >
                     {CardContent}
                   </div>
@@ -167,7 +194,7 @@ export default function CompaniesPage() {
                 <Link 
                   key={company.id} 
                   href={`/companies/${company.id}`}
-                  className="group cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gold/30 hover:shadow-2xl transition-all duration-500 flex flex-col h-full relative"
+                  className="group cursor-pointer company-card overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full relative"
                 >
                   {CardContent}
                 </Link>
@@ -189,6 +216,7 @@ export default function CompaniesPage() {
 
         </div>
       </section>
+      <Footer/>
     </div>
   );
 }
